@@ -6,6 +6,8 @@ NWT adds a new screen to FS25 to easily view your farm's value. It is not curren
 1. Download `FS25_netWorthTracker.zip` from the latest release on the [releases page](https://github.com/EvanKirsch/fs25_nwt/releases)
 2. Move your downloaded copy of `FS25_netWorthTracker.zip` to `Documents\My Games\Farming Simulator 2025\mods`
 
+Additional installiation support availiable in my [YouTube demo](https://www.youtube.com/watch?v=xL4-8oikK5Q) of the mod
+
 ### Manual Build Instructions
 `git archive -o FS25_netWorthTracker.zip HEAD`
 
