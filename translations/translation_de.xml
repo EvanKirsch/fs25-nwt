@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
     <texts>
-        <text name="ui_header_title" text="Betriebsbewertung"/>
-        <text name="ui_header_lineitem" text="Werbebuchung"/>
+        <text name="ui_header_title" text="Hofbewertung"/>
+        <text name="ui_header_lineitem" text="Einzelposten"/>
         <text name="ui_header_category" text="Kategorie"/>
-        <text name="ui_header_details" text="Einzelheiten"/>
+        <text name="ui_header_details" text="Details"/>
         <text name="ui_header_value" text="Wert"/>
-        <text name="ui_footer_total" text="Gesamt"/>
-        <text name="table_cat_cash" text="Kasse"/>
+        <text name="ui_footer_total" text="Gesamtwert"/>
+        <text name="table_cat_cash" text="Bargeld"/>
         <text name="table_cat_equipment" text="Ausrüstung"/>
         <text name="table_cat_property" text="Eigentum"/>
         <text name="table_cat_inventory" text="Inventar"/>
-        <text name="table_cash" text="Kasse"/>
+        <text name="table_cash" text="Bargeld"/>
         <text name="table_loan" text="Darlehen"/>
         <text name="table_placeable" text="Gebäude"/>
-        <text name="table_livestock" text="Vieh"/>
-        <text name="table_fill" text="Sättigen"/>
+        <text name="table_livestock" text="Viehbestand"/>
+        <text name="table_fill" text="Füllmittel"/>
         <text name="table_land" text="Ackerland"/>
         <text name="details_age" text="Alter"/>
         <text name="details_age_month_unit" text="Monate"/>

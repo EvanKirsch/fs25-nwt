@@ -1,23 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://validation.gdn.giants-software.com/xml/fs25/modDesc.xsd">
+<modDesc descVersion="104" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://validation.gdn.giants-software.com/xml/fs25/modDesc.xsd">
   <author>Evan Kirsch</author>
-  <version>1.0.0.1</version>
+  <version>1.0.0.2</version>
   <title>
       <en>Net Worth Tracker</en>
+      <de>Vermögens-Tracker</de>
   </title>
   <description>
     <en><![CDATA[
-    Description: Adds menu screen to sumarize the farms total value
-    GitHub link: https://github.com/EvanKirsch/fs25_nwt
+Adds menu screen to sumarize your farms total value in a balance sheet.
+
+The each line item in the balance sheet contains a name, catagory, additional details and a value and are sortable by name, catagory and value.
+The line items are summaized into four subtotals:
+  - Cash: cash and loans
+  - Equipment
+  - Property: land and buildings
+  - Inventory: fill and livestock
+
+GitHub link: https://github.com/EvanKirsch/fs25_nwt
+Youtube Demo [EN]: https://www.youtube.com/watch?v=xL4-8oikK5Q
+
+Changelog
+---
+1.0.0.2:
+  - Updates German translations
+  - Adds multiplayer support
+1.0.0.1:
+  - Initial release
     ]]></en>
     <de><![CDATA[
-    Beschreibung: Fügt einen Menübildschirm hinzu, um den Gesamtwert der Farm zusammenzufassen
-    GitHub-Link: https://github.com/EvanKirsch/fs25_nwt
+Fügt einen Menübildschirm hinzu, der den Gesamtwert Ihrer Farm in einer Bilanz zusammenfasst.
+
+Jeder Bilanzposten enthält einen Namen, eine Kategorie, zusätzliche Details und einen Wert und kann nach Name, Kategorie und Wert sortiert werden.
+Die Posten werden in vier Zwischensummen zusammengefasst:
+  - Bargeld: Bargeld und Darlehen
+  - Ausrüstung
+  - Eigentum: Ackerland und Gebäude
+  - Inventar: Füllmittel und Viehbestand
+
+GitHub-Link: https://github.com/EvanKirsch/fs25_nwt
+YouTube-Demo [EN]: https://www.youtube.com/watch?v=xL4-8oikK5Q
+
+Änderungsprotokoll
+---
+1.0.0.2:
+  - Deutsche Übersetzungen aktualisiert
+  - Mehrspielerunterstützung hinzugefügt
+1.0.0.1:
+  - Erste Veröffentlichung
     ]]></de>
   </description>    
   <iconFilename>icon_NetWorthTracker.dds</iconFilename>
   <l10n filenamePrefix="translations/translation" />
-  <multiplayer supported="false"/>
+  <multiplayer supported="true"/>
   <extraSourceFiles>
     <sourceFile filename="src/NWT_netWorthTracker.lua" />
     <sourceFile filename="src/util/NWT_fillCalcUtil.lua" />
