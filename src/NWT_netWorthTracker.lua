@@ -9,8 +9,10 @@ NWT_netWorthTracker.modName = g_currentModName
 NWT_netWorthTracker.debug = false
 
 source(NWT_netWorthTracker.dir .. "src/NWT_trackOverTimeManager.lua")
+source(NWT_netWorthTracker.dir .. "src/dao/NWT_trackOverTimeDoa.lua")
 source(NWT_netWorthTracker.dir .. "src/gui/NWT_inGameMenuNetWorthTracker.lua")
 source(NWT_netWorthTracker.dir .. "src/model/NWT_entry.lua")
+source(NWT_netWorthTracker.dir .. "src/model/NWT_valueAtPeriod.lua")
 source(NWT_netWorthTracker.dir .. "src/util/NWT_fillCalcUtil.lua")
 source(NWT_netWorthTracker.dir .. "src/util/NWT_netWorthCalcUtil.lua")
 
