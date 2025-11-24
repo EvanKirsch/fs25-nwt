@@ -14,9 +14,9 @@ function NWT_valueAtPeriod.new(isServer, isClient, customMt)
     return self
 end
 
-function NWT_valueAtPeriod:init(farmId, periodId, catagory, amount)
+function NWT_valueAtPeriod:init(farmId, periodId, category, amount)
     self.farmId = farmId
     self.periodId = periodId
     self.category = category
-    self.entryAmount = amount
+    self.amount = amount
 end

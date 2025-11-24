@@ -38,7 +38,7 @@ function NWT_trackOverTimeManager:recordFarmValue()
   periodValue:register()
 
   -- DebugUtil.printTableRecursively(g_currentMission.environment)
-  NWT_trackOverTimeDoa:saveObjectToXMLFile(periodValue, "~/wip_testfile.xml")
+  NWT_trackOverTimeDoa:saveObjectToXMLFile(periodValue)
 
 end
 
