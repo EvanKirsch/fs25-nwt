@@ -16,7 +16,6 @@ source(NWT_netWorthTracker.dir .. "src/model/NWT_valueAtPeriod.lua")
 source(NWT_netWorthTracker.dir .. "src/util/NWT_fillCalcUtil.lua")
 source(NWT_netWorthTracker.dir .. "src/util/NWT_netWorthCalcUtil.lua")
 
-addModEventListener(NWT_trackOverTimeManager)
 
 function NWT_netWorthTracker:loadMap()
 	local guiNetWorthTracker = NWT_inGameMenuNetWorthTracker.new(g_i18n) 
@@ -84,3 +83,4 @@ function NWT_netWorthTracker.fixInGameMenu(frame,pageName,uvs,position,predicate
 end
 
 addModEventListener(NWT_netWorthTracker)
+addModEventListener(NWT_trackOverTimeManager)

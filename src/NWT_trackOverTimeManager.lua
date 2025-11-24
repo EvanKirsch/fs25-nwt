@@ -4,11 +4,13 @@
 --
 
 NWT_trackOverTimeManager = {}
+NWT_trackOverTimeManager.periodFarmValues = {}
 
 local NWT_trackOverTimeManager_mt = Class(NWT_trackOverTimeManager, AbstractManager)
 
 function NWT_trackOverTimeManager.new(customMt)
   local self = NWT_trackOverTimeManager:superClass().new(customMt or NWT_trackOverTimeManager_mt)
+  self.periodFarmValues = {}
 
   return self
 end
@@ -19,7 +21,7 @@ end
 
 function NWT_trackOverTimeManager:onPeriodChanged()
   if g_currentMission:getIsServer() then
-    g_nwt_trackOverTimeManager.recordFarmValue()
+    g_nwt_trackOverTimeManager:recordFarmValue()
 
   end
 end
@@ -38,7 +40,7 @@ function NWT_trackOverTimeManager:recordFarmValue()
   periodValue:register()
 
   -- DebugUtil.printTableRecursively(g_currentMission.environment)
-  NWT_trackOverTimeDoa:saveObjectToXMLFile(periodValue)
+  table.insert(self.periodFarmValues, periodValue)
 
 end
 
