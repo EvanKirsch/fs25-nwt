@@ -21,6 +21,7 @@ function NWT_historyDao:loadFromXMLFile()
         local valueKey = NWT_historyDao.KEY
           ..string.format(".farm(%d)", farmIdIndex)
           ..string.format(".day(%d)", dayIndex)
+          ..string.format(".%s", "total")
 
         if xmlFile:hasProperty(valueKey) then
           local farmId = xmlFile:getInt(valueKey.."#farmId")
@@ -63,6 +64,7 @@ function NWT_historyDao:saveToXMLFile()
     local valueKey = NWT_historyDao.KEY
       ..string.format(".farm(%d)", history.farmId)
       ..string.format(".day(%d)", history.dayId)
+      ..string.format(".%s", "total")
 
     xmlFile:setInt(valueKey.."#farmId", history.farmId)
     xmlFile:setInt(valueKey.."#dayId", history.dayId)
