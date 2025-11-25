@@ -7,6 +7,8 @@
         <text name="ui_header_details" text="Details"/>
         <text name="ui_header_value" text="Value"/>
         <text name="ui_footer_total" text="Total"/>
+        <text name="ui_farm_value" text="Farm Value"/>
+        <text name="ui_farm_value_history" text="Farm Value History"/>
         <text name="table_cat_cash" text="Cash"/>
         <text name="table_cat_equipment" text="Equipment"/>
         <text name="table_cat_property" text="Property"/>

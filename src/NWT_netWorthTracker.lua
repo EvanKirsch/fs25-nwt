@@ -80,6 +80,8 @@ function NWT_netWorthTracker.fixInGameMenu(frame,pageName,uvs,position,predicate
 	end
 
 	inGameMenu:rebuildTabList()
+    -- DebugUtil.printTableRecursively(g_inGameMenu.ingameMenuNetWorthTracker)
+    DebugUtil.printTableRecursively(g_inGameMenu.pageSettings)
 end
 
 addModEventListener(NWT_netWorthTracker)
