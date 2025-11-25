@@ -17,33 +17,35 @@ function NWT_historyDao:loadFromXMLFile()
     -- TODO - figure out how to get farmIds?
     for farmIdIndex = 0, 16 do
       for dayIndex = 0, g_currentMission.environment.currentDay do
+        for _, categoryId in pairs(g_nwt_historyManager.categories) do
 
-        local valueKey = NWT_historyDao.KEY
-          ..string.format(".farm(%d)", farmIdIndex)
-          ..string.format(".day(%d)", dayIndex)
-          ..string.format(".%s", "total")
+          local valueKey = NWT_historyDao.KEY
+            ..string.format(".farm(%d)", farmIdIndex)
+            ..string.format(".day(%d)", dayIndex)
+            ..string.format(".%s", categoryId)
 
-        if xmlFile:hasProperty(valueKey) then
-          local farmId = xmlFile:getInt(valueKey.."#farmId")
-          local dayId = xmlFile:getInt(valueKey.."#dayId")
-          local category = xmlFile:getString(valueKey.."#category")
-          local amount = xmlFile:getFloat(valueKey.."#amount")
+          if xmlFile:hasProperty(valueKey) then
+            local farmId = xmlFile:getInt(valueKey.."#farmId")
+            local dayId = xmlFile:getInt(valueKey.."#dayId")
+            local category = xmlFile:getString(valueKey.."#category")
+            local amount = xmlFile:getFloat(valueKey.."#amount")
 
-          if farmId ~= nil
-           and dayId ~= nil
-           and category ~= nil
-           and amount ~= nil then
-            local valueHistory = NWT_history.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-            valueHistory:init(farmId, dayId, category, amount)
-            valueHistory:register()
+            if farmId ~= nil
+             and dayId ~= nil
+             and category ~= nil
+             and amount ~= nil then
+              local valueHistory = NWT_history.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
+              valueHistory:init(farmId, dayId, category, amount)
+              valueHistory:register()
 
-            table.insert(g_nwt_historyManager.histories, valueHistory)
+              table.insert(g_nwt_historyManager.histories, valueHistory)
 
+            end
           end
-        end
 
-      end
-    end
+        end -- end for categories
+      end -- end for days
+    end -- end for farms
 
     xmlFile:delete()
 
@@ -64,7 +66,7 @@ function NWT_historyDao:saveToXMLFile()
     local valueKey = NWT_historyDao.KEY
       ..string.format(".farm(%d)", history.farmId)
       ..string.format(".day(%d)", history.dayId)
-      ..string.format(".%s", "total")
+      ..string.format(".%s", history.category)
 
     xmlFile:setInt(valueKey.."#farmId", history.farmId)
     xmlFile:setInt(valueKey.."#dayId", history.dayId)

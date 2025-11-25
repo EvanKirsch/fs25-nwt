@@ -4,6 +4,10 @@
 --
 
 NWT_history = {}
+NWT_history.categories = {
+  Total = "total"
+}
+
 local NWT_history_mt = Class(NWT_history, Object)
 
 InitObjectClass(NWT_history, "NWT_history")

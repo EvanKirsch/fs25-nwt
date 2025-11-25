@@ -5,6 +5,9 @@
 
 NWT_historyManager = {}
 NWT_historyManager.histories = {}
+NWT_historyManager.categories = {
+  Total = "total"
+}
 
 local NWT_historyManager_mt = Class(NWT_historyManager, AbstractManager)
 
@@ -36,7 +39,7 @@ function NWT_historyManager:recordFarmValue()
   end
   local dayId = g_currentMission.environment.currentDay
   local history = NWT_history.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-  history:init(farmId, dayId, "Total", fNetWorthTotalValue)
+  history:init(farmId, dayId, g_nwt_historyManager.categories.Total, fNetWorthTotalValue)
   history:register()
 
   -- DebugUtil.printTableRecursively(g_currentMission.environment)
