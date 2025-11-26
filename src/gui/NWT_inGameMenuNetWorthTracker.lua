@@ -3,8 +3,15 @@
 -- Converts entries for display and populates entry lists on in game menu
 --
 
-NWT_inGameMenuNetWorthTracker = {}
+NWT_inGameMenuNetWorthTracker = {
+    CATEGRORIES = {
+        FARM_VALUE = 1,
+        FARM_HISTORY = 2
+    }
+}
 NWT_inGameMenuNetWorthTracker.entryData = {}
+
+NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES = #NWT_inGameMenuNetWorthTracker.CATEGRORIES
 
 -- counters to track current status of sorting
 local lineItemSort = 0
@@ -14,13 +21,16 @@ local valueSort = 0
 NWT_inGameMenuNetWorthTracker._mt = Class(NWT_inGameMenuNetWorthTracker, TabbedMenuFrameElement)
 
 function NWT_inGameMenuNetWorthTracker.new(i18n, messageCenter)
-     local self = NWT_inGameMenuNetWorthTracker:superClass().new(nil, NWT_inGameMenuNetWorthTracker._mt)
+    local self = NWT_inGameMenuNetWorthTracker:superClass().new(nil, NWT_inGameMenuNetWorthTracker._mt)
 
-     self.name = "NWT_inGameMenuNetWorthTracker"
-     self.i18n = i18n
-     self.messageCenter = messageCenter
+    self.name = "NWT_inGameMenuNetWorthTracker"
+    self.i18n = i18n
+    self.messageCenter = messageCenter
+    self.subCategoryPages = {
+    }
+    self.subCategoryTabs = {}
      
-     return self
+    return self
  end
 
 function NWT_inGameMenuNetWorthTracker:onGuiSetupFinished()
@@ -36,7 +46,8 @@ function NWT_inGameMenuNetWorthTracker:onFrameOpen(element)
     self:hideSortIcons()
     self:updateContent()
 
-    FocusManager:setFocus(self.entryTable)
+    self:updateSubCategoryPages(self.CATEGRORIES.FARM_VALUE)
+    FocusManager:setFocus(self.subCategoryPages[self.CATEGRORIES.FARM_VALUE]:getDescendantByName("layout"))
 end
 
 function NWT_inGameMenuNetWorthTracker:updateContent()
@@ -185,12 +196,49 @@ end
 
 
 function NWT_inGameMenuNetWorthTracker:hideSortIcons()
-        self.iconLineItemAscending:setVisible(false)
-        self.iconLineItemDescending:setVisible(false)
+    self.iconLineItemAscending:setVisible(false)
+    self.iconLineItemDescending:setVisible(false)
 
-        self.iconCategoryAscending:setVisible(false)
-        self.iconCategoryDescending:setVisible(false)
+    self.iconCategoryAscending:setVisible(false)
+    self.iconCategoryDescending:setVisible(false)
 
-        self.iconValueAscending:setVisible(false)
-        self.iconValueDescending:setVisible(false)
+    self.iconValueAscending:setVisible(false)
+    self.iconValueDescending:setVisible(false)
+end
+
+function NWT_inGameMenuNetWorthTracker:initialize()
+    print("--- NWT init ---")
+    self.subCategoryTabs = {
+        self.inGameMenuNetWorth,
+        self.inGameMenuNetWorthHistory
+    }
+    self.subCategoryPages = {
+        self.inGameMenuNetWorthPage,
+        self.inGameMenuNetWorthPage
+    }
+    for key = 1, NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES do
+        self.subCategoryPaging:addText(tostring(key))
+        FocusManager:loadElementFromCustomValues(self.subCategoryPages[key])
+        FocusManager:loadElementFromCustomValues(self.subCategoryTabs[key])
+
+        self.subCategoryTabs[key]:getDescendantByName("background"):setSize(self.subCategoryTabs[key].size[1], self.subCategoryTabs[key].size[2])
+        self.subCategoryTabs[key].onClickCallback = function ()
+            self:updateSubCategoryPages(key)
+        end
+    end
+    self.subCategoryBox:invalidateLayout()
+    self.subCategoryPaging:setSize(self.subCategoryBox.maxFlowSize + 140 * g_pixelSizeScaledX)
+end
+
+function NWT_inGameMenuNetWorthTracker:updateSubCategoryPages(state)
+    print("--- NWT update pages ---")
+    print(state)
+    DebugUtil.printTableRecursively(self.subCategoryPages)
+    -- DebugUtil.printTableRecursively(self.subCategoryTabs)
+    for i, _ in ipairs(self.subCategoryPages) do
+        self.subCategoryPages[i]:setVisible(false)
+        self.subCategoryTabs[i]:setSelected(false)
+    end
+    self.subCategoryPages[state]:setVisible(true)
+    self.subCategoryTabs[state]:setSelected(true)
 end

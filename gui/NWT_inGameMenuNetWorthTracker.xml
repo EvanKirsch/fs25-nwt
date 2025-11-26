@@ -7,16 +7,20 @@
             </Bitmap>
             <Text profile="NWT_menuHeaderText" text="$l10n_ui_header_title" />
         </GuiElement>
-        <BoxLayout profile="fs25_subCategorySelectorTabbedBox">
-            <Button profile="fs25_subCategorySelectorTabbedTab" id="inGameMenuNetWorth" text="$l10n_ui_farm_value" onClick="onClickInGameMenuNetWorth">
-                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background"/>
-            </Button>
-            <Button profile="fs25_subCategorySelectorTabbedTab" id="inGameMenuNetWorthHistory" text="$l10n_ui_farm_value_history" onClick="onClickInGameMenuNetWorthHistory">
-                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background"/>
-            </Button>
+        <BoxLayout profile="fs25_subCategorySelectorTabbedBox" id="subCategoryBox">
+              <Button profile="fs25_subCategorySelectorTabbedTab" id="inGameMenuNetWorth" text="$l10n_ui_farm_value">
+                      <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background"/>
+              </Button>
+              <Button profile="fs25_subCategorySelectorTabbedTab" id="inGameMenuNetWorthHistory" text="$l10n_ui_farm_value_history">
+                      <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background"/>
+              </Button>
         </BoxLayout>
 
-        <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="inGameMenuNetWorthPage">
+        <ThreePartBitmap profile="fs25_lineSeparatorTopHighlighted" position="0px -57px" />
+        <MultiTextOption profile="fs25_subCategorySelectorTabbed" id="subCategoryPaging" position="0px -10px" onClick="updateSubCategoryPages" >
+        </MultiTextOption>
+
+        <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="inGameMenuNetWorthPage" name="layout">
             <GuiElement profile="fs25_statisticsHeaderBox">
                 <Button profile="NWT_inGameMenuHeader" position="20px 0px" size="380px 32px" text="$l10n_ui_header_lineitem" onClick="onClickLineItemSort">
                     <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" visible="false" position="-10px 0px" id="iconLineItemAscending" />
