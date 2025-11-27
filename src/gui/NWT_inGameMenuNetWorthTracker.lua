@@ -7,11 +7,16 @@ NWT_inGameMenuNetWorthTracker = {
     CATEGRORIES = {
         FARM_VALUE = 1,
         FARM_HISTORY = 2
+    },
+    CATEGRORY_TEXTS = {
+        "ui_farm_value",
+        "ui_farm_value_history"
     }
+
 }
 NWT_inGameMenuNetWorthTracker.entryData = {}
 
-NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES = #NWT_inGameMenuNetWorthTracker.CATEGRORIES
+NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES = #NWT_inGameMenuNetWorthTracker.CATEGRORY_TEXTS
 
 -- counters to track current status of sorting
 local lineItemSort = 0
@@ -208,33 +213,27 @@ end
 
 function NWT_inGameMenuNetWorthTracker:initialize()
     print("--- NWT init ---")
-    self.subCategoryTabs = {
-        self.inGameMenuNetWorth,
-        self.inGameMenuNetWorthHistory
-    }
-    self.subCategoryPages = {
-        self.inGameMenuNetWorthPage,
-        self.inGameMenuNetWorthPage
-    }
+
+    self.subCategoryTabs[self.CATEGRORIES.FARM_VALUE] = self.inGameMenuNetWorth
+    self.subCategoryTabs[self.CATEGRORIES.FARM_HISTORY] = self.inGameMenuNetWorthHistory
+
+    self.subCategoryPages[self.CATEGRORIES.FARM_VALUE] = self.inGameMenuNetWorthPage
+    self.subCategoryPages[self.CATEGRORIES.FARM_HISTORY] = self.inGameMenuNetWorthPage
+
     for key = 1, NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES do
         self.subCategoryPaging:addText(tostring(key))
-        FocusManager:loadElementFromCustomValues(self.subCategoryPages[key])
-        FocusManager:loadElementFromCustomValues(self.subCategoryTabs[key])
 
         self.subCategoryTabs[key]:getDescendantByName("background"):setSize(self.subCategoryTabs[key].size[1], self.subCategoryTabs[key].size[2])
         self.subCategoryTabs[key].onClickCallback = function ()
             self:updateSubCategoryPages(key)
         end
     end
-    self.subCategoryBox:invalidateLayout()
     self.subCategoryPaging:setSize(self.subCategoryBox.maxFlowSize + 140 * g_pixelSizeScaledX)
 end
 
 function NWT_inGameMenuNetWorthTracker:updateSubCategoryPages(state)
     print("--- NWT update pages ---")
-    print(state)
-    DebugUtil.printTableRecursively(self.subCategoryPages)
-    -- DebugUtil.printTableRecursively(self.subCategoryTabs)
+
     for i, _ in ipairs(self.subCategoryPages) do
         self.subCategoryPages[i]:setVisible(false)
         self.subCategoryTabs[i]:setSelected(false)

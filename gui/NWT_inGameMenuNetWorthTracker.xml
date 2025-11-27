@@ -17,8 +17,7 @@
         </BoxLayout>
 
         <ThreePartBitmap profile="fs25_lineSeparatorTopHighlighted" position="0px -57px" />
-        <MultiTextOption profile="fs25_subCategorySelectorTabbed" id="subCategoryPaging" position="0px -10px" onClick="updateSubCategoryPages" >
-        </MultiTextOption>
+        <MultiTextOption profile="fs25_subCategorySelectorTabbed" id="subCategoryPaging" position="0px -10px" onClick="updateSubCategoryPages" />
 
         <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="inGameMenuNetWorthPage" name="layout">
             <GuiElement profile="fs25_statisticsHeaderBox">
