@@ -218,7 +218,7 @@ function NWT_inGameMenuNetWorthTracker:initialize()
     self.subCategoryTabs[self.CATEGRORIES.FARM_HISTORY] = self.inGameMenuNetWorthHistory
 
     self.subCategoryPages[self.CATEGRORIES.FARM_VALUE] = self.inGameMenuNetWorthPage
-    self.subCategoryPages[self.CATEGRORIES.FARM_HISTORY] = self.inGameMenuNetWorthPage
+    self.subCategoryPages[self.CATEGRORIES.FARM_HISTORY] = self.inGameMenuNetWorthHistoryPage
 
     for key = 1, NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES do
         self.subCategoryPaging:addText(tostring(key))

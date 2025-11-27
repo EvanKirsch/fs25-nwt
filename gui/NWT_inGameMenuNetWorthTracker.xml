@@ -69,6 +69,8 @@
                 <Text profile="NWT_inGameMenuFooterRight" position="-20px -5px" id="netWorthTotalValue"/>
             </GuiElement>
          </GuiElement>
+         <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="inGameMenuNetWorthHistoryPage" name="layout">
+         </GuiElement>
     </GuiElement>
 
 
