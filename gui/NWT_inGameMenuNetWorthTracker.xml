@@ -72,7 +72,10 @@
 
          <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="inGameMenuNetWorthHistoryPage" name="layout">
             <GuiElement profile="fs25_statisticsHeaderBox">
-                <Button profile="NWT_inGameMenuHeader" position="20px 0px" size="380px 32px" text="$l10n_ui_header_day" handleFocus="false"/>
+                <Button profile="NWT_inGameMenuHeader" position="20px 0px" size="380px 32px" text="$l10n_ui_header_day" onClick="onClickDaySort">
+                    <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" visible="false" position="-10px 0px" id="iconDayAscending" />
+                    <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" visible="false" position="-10px 0px" id="iconDayDescending" />
+                </Button>
                 <Button profile="NWT_inGameMenuHeaderRight" position="1250px 0px" size="280px 32px" text="$l10n_ui_header_net_worth" handleFocus="false"/>
             </GuiElement>
 

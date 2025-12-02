@@ -22,6 +22,7 @@ NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES = #NWT_inGameMenuNetWorthTracker.CA
 local lineItemSort = 0
 local categorySort = 0
 local valueSort = 0
+local daySort = 0
 
 NWT_inGameMenuNetWorthTracker._mt = Class(NWT_inGameMenuNetWorthTracker, TabbedMenuFrameElement)
 
@@ -232,16 +233,40 @@ function NWT_inGameMenuNetWorthTracker:onClickValueSort(entry)
     self.entryTable:reloadData()
 end
 
+function NWT_inGameMenuNetWorthTracker:onClickDaySort(history)
+    self:playSample(GuiSoundPlayer.SOUND_SAMPLES.CLICK)
+    self:hideSortIcons()
+
+    local sortFunction
+    daySort = (daySort + 1) % 2
+    if daySort == 0 then
+        self.iconDayAscending:setVisible(true)
+        sortFunction = function (a, b) return a.dayId < b.dayId end
+
+    elseif daySort == 1 then
+        self.iconDayDescending:setVisible(true)
+        sortFunction = function (a, b) return a.dayId > b.dayId end
+
+    end
+
+    table.sort(self.historyData, sortFunction)
+    self.historyTable:reloadData()
+end
 
 function NWT_inGameMenuNetWorthTracker:hideSortIcons()
-    self.iconLineItemAscending:setVisible(false)
-    self.iconLineItemDescending:setVisible(false)
+    if self.currentPage == self.CATEGRORIES.FARM_VALUE then
+        self.iconLineItemAscending:setVisible(false)
+        self.iconLineItemDescending:setVisible(false)
 
-    self.iconCategoryAscending:setVisible(false)
-    self.iconCategoryDescending:setVisible(false)
+        self.iconCategoryAscending:setVisible(false)
+        self.iconCategoryDescending:setVisible(false)
 
-    self.iconValueAscending:setVisible(false)
-    self.iconValueDescending:setVisible(false)
+        self.iconValueAscending:setVisible(false)
+        self.iconValueDescending:setVisible(false)
+    elseif self.currentPage == self.CATEGRORIES.FARM_HISTORY then
+        self.iconDayAscending:setVisible(false)
+        self.iconDayDescending:setVisible(false)
+    end
 end
 
 function NWT_inGameMenuNetWorthTracker:initialize()
