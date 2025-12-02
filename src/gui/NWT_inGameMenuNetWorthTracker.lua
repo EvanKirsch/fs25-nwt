@@ -3,8 +3,20 @@
 -- Converts entries for display and populates entry lists on in game menu
 --
 
-NWT_inGameMenuNetWorthTracker = {}
+NWT_inGameMenuNetWorthTracker = {
+    CATEGRORIES = {
+        FARM_VALUE = 1,
+        FARM_HISTORY = 2
+    },
+    CATEGRORY_TEXTS = {
+        "ui_farm_value",
+        "ui_farm_value_history"
+    }
+
+}
 NWT_inGameMenuNetWorthTracker.entryData = {}
+
+NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES = #NWT_inGameMenuNetWorthTracker.CATEGRORY_TEXTS
 
 -- counters to track current status of sorting
 local lineItemSort = 0
@@ -14,20 +26,29 @@ local valueSort = 0
 NWT_inGameMenuNetWorthTracker._mt = Class(NWT_inGameMenuNetWorthTracker, TabbedMenuFrameElement)
 
 function NWT_inGameMenuNetWorthTracker.new(i18n, messageCenter)
-     local self = NWT_inGameMenuNetWorthTracker:superClass().new(nil, NWT_inGameMenuNetWorthTracker._mt)
+    local self = NWT_inGameMenuNetWorthTracker:superClass().new(nil, NWT_inGameMenuNetWorthTracker._mt)
 
-     self.name = "NWT_inGameMenuNetWorthTracker"
-     self.i18n = i18n
-     self.messageCenter = messageCenter
-     
-     return self
+    self.name = "NWT_inGameMenuNetWorthTracker"
+    self.i18n = i18n
+    self.messageCenter = messageCenter
+    self.subCategoryPages = {}
+    self.subCategoryTabs = {}
+    self.currentPage = self.CATEGRORIES.FARM_VALUE
+    self.farmValueDelegate = NWT_farmValueDelegate.new()
+    self.farmHistoryDelegate = NWT_historyDelegate.new()
+
+    return self
  end
 
 function NWT_inGameMenuNetWorthTracker:onGuiSetupFinished()
     NWT_inGameMenuNetWorthTracker:superClass().onGuiSetupFinished(self)
 
+    self.historyTable:setDataSource(self)
+    self.historyTable:setDelegate(self)
+
     self.entryTable:setDataSource(self)
     self.entryTable:setDelegate(self)
+
 end
 
 function NWT_inGameMenuNetWorthTracker:onFrameOpen(element)
@@ -36,12 +57,20 @@ function NWT_inGameMenuNetWorthTracker:onFrameOpen(element)
     self:hideSortIcons()
     self:updateContent()
 
-    FocusManager:setFocus(self.entryTable)
+    self:updateSubCategoryPages(self.CATEGRORIES.FARM_VALUE)
+    FocusManager:setFocus(self.subCategoryPages[self.CATEGRORIES.FARM_VALUE]:getDescendantByName("layout"))
 end
 
 function NWT_inGameMenuNetWorthTracker:updateContent()
-    local farmId = g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
-    self.entryData = NWT_netWorthCalcUtil:getEntries(farmId)
+    self:getEntryTable()
+    self:getHistoryTable()
+
+    self.entryTable:reloadData()
+    self.historyTable:reloadData()
+end
+
+function NWT_inGameMenuNetWorthTracker:getEntryTable()
+    self.entryData = self.farmValueDelegate:getFarmEnteries()
 
     local fCashTotalValue = 0
     local fEquipmentTotalValue = 0
@@ -70,7 +99,7 @@ function NWT_inGameMenuNetWorthTracker:updateContent()
 
         end
 
-    end 
+    end
 
     self.cashTotalValue:setText(g_i18n:formatMoney(fCashTotalValue, 0, true, true))
     self.equipmentTotalValue:setText(g_i18n:formatMoney(fEquipmentTotalValue, 0, true, true))
@@ -78,7 +107,10 @@ function NWT_inGameMenuNetWorthTracker:updateContent()
     self.inventoryTotalValue:setText(g_i18n:formatMoney(fInventoryTotalValue, 0, true, true))
     self.netWorthTotalValue:setText(g_i18n:formatMoney(fNetWorthTotalValue, 0, true, true))
 
-    self.entryTable:reloadData()
+end
+
+function NWT_inGameMenuNetWorthTracker:getHistoryTable()
+    self.historyData = self.farmHistoryDelegate:getFarmHistories()
 end
 
 function NWT_inGameMenuNetWorthTracker:getNumberOfSections()
@@ -86,7 +118,12 @@ function NWT_inGameMenuNetWorthTracker:getNumberOfSections()
 end
 
 function NWT_inGameMenuNetWorthTracker:getNumberOfItemsInSection(list, section)
-    return #self.entryData
+    local items = #self.entryData
+    if self.currentPage == self.CATEGRORIES.FARM_HISTORY then
+        items = #self.historyData
+    end
+
+    return items
 end
 
 function NWT_inGameMenuNetWorthTracker:getTitleForSectionHeader(list, section)
@@ -94,29 +131,41 @@ function NWT_inGameMenuNetWorthTracker:getTitleForSectionHeader(list, section)
 end
 
 function NWT_inGameMenuNetWorthTracker:populateCellForItemInSection(list, section, index, cell)
-    local loc_entryData = self.entryData[index]
-    cell:getAttribute("entryTitle"):setText(loc_entryData.entryTitle)
+    if self.currentPage == self.CATEGRORIES.FARM_VALUE and cell:getAttribute("entryTitle") ~= nil then
+        local loc_entryData = self.entryData[index]
+        cell:getAttribute("entryTitle"):setText(loc_entryData.entryTitle)
 
-    local entryCategory = tostring(loc_entryData.category)
-    if loc_entryData.subCategory ~= nil
-        and loc_entryData.subCategory ~= "" then
-        entryCategory = entryCategory .. " (" .. tostring(loc_entryData.subCategory) .. ")"
+        local entryCategory = tostring(loc_entryData.category)
+        if loc_entryData.subCategory ~= nil
+            and loc_entryData.subCategory ~= "" then
+            entryCategory = entryCategory .. " (" .. tostring(loc_entryData.subCategory) .. ")"
+
+        end
+        cell:getAttribute("entryCategory"):setText(entryCategory)
+
+        local entryDetails = tostring(loc_entryData.details)
+        local subCatFill = g_i18n:getText("table_fill")
+        if loc_entryData.details ~= nil
+            and loc_entryData.subCategory ~= nil
+            and loc_entryData.subCategory == subCatFill then
+            -- TODO - formats tree saplings funky
+            entryDetails = g_i18n:formatVolume(loc_entryData.details, 0)
+
+        end
+        cell:getAttribute("entryDetails"):setText(entryDetails)
+
+        cell:getAttribute("entryAmount"):setText(g_i18n:formatMoney(loc_entryData.entryAmount, 0, true, true))
+
+    elseif self.currentPage == self.CATEGRORIES.FARM_HISTORY and cell:getAttribute("historyDay") ~= nil then
+        -- DebugUtil.printTableRecursively(self.historyData)
+
+        local loc_historyData = self.historyData[index]
+        cell:getAttribute("historyDay"):setText(loc_historyData.dayId)
+        -- cell:getAttribute("historyCategory"):setText(loc_historyData.category)
+        cell:getAttribute("historyAmount"):setText(g_i18n:formatMoney(loc_historyData.amount, 0, true, true))
 
     end
-    cell:getAttribute("entryCategory"):setText(entryCategory)
 
-    local entryDetails = tostring(loc_entryData.details)
-    local subCatFill = g_i18n:getText("table_fill")
-    if loc_entryData.details ~= nil
-        and loc_entryData.subCategory ~= nil
-        and loc_entryData.subCategory == subCatFill then
-        -- TODO - formats tree saplings funky
-        entryDetails = g_i18n:formatVolume(loc_entryData.details, 0)
-
-    end
-    cell:getAttribute("entryDetails"):setText(entryDetails)
-
-    cell:getAttribute("entryAmount"):setText(g_i18n:formatMoney(loc_entryData.entryAmount, 0, true, true))
 end
 
 function NWT_inGameMenuNetWorthTracker:onClickLineItemSort(entry)
@@ -185,12 +234,42 @@ end
 
 
 function NWT_inGameMenuNetWorthTracker:hideSortIcons()
-        self.iconLineItemAscending:setVisible(false)
-        self.iconLineItemDescending:setVisible(false)
+    self.iconLineItemAscending:setVisible(false)
+    self.iconLineItemDescending:setVisible(false)
 
-        self.iconCategoryAscending:setVisible(false)
-        self.iconCategoryDescending:setVisible(false)
+    self.iconCategoryAscending:setVisible(false)
+    self.iconCategoryDescending:setVisible(false)
 
-        self.iconValueAscending:setVisible(false)
-        self.iconValueDescending:setVisible(false)
+    self.iconValueAscending:setVisible(false)
+    self.iconValueDescending:setVisible(false)
+end
+
+function NWT_inGameMenuNetWorthTracker:initialize()
+    self.subCategoryTabs[self.CATEGRORIES.FARM_VALUE] = self.inGameMenuNetWorth
+    self.subCategoryTabs[self.CATEGRORIES.FARM_HISTORY] = self.inGameMenuNetWorthHistory
+
+    self.subCategoryPages[self.CATEGRORIES.FARM_VALUE] = self.inGameMenuNetWorthPage
+    self.subCategoryPages[self.CATEGRORIES.FARM_HISTORY] = self.inGameMenuNetWorthHistoryPage
+
+    for key = 1, NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES do
+        self.subCategoryPaging:addText(tostring(key))
+
+        self.subCategoryTabs[key]:getDescendantByName("background"):setSize(self.subCategoryTabs[key].size[1], self.subCategoryTabs[key].size[2])
+        self.subCategoryTabs[key].onClickCallback = function ()
+            self:updateSubCategoryPages(key)
+        end
+    end
+    self.subCategoryPaging:setSize(self.subCategoryBox.maxFlowSize + 140 * g_pixelSizeScaledX)
+end
+
+function NWT_inGameMenuNetWorthTracker:updateSubCategoryPages(state)
+    for i, _ in ipairs(self.subCategoryPages) do
+        self.subCategoryPages[i]:setVisible(false)
+        self.subCategoryTabs[i]:setSelected(false)
+    end
+    self.subCategoryPages[state]:setVisible(true)
+    self.subCategoryTabs[state]:setSelected(true)
+    self.currentPage = state
+    self.entryTable:reloadData()
+    self.historyTable:reloadData()
 end

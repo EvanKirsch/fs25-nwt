@@ -8,13 +8,21 @@ NWT_netWorthTracker.dir = g_currentModDirectory
 NWT_netWorthTracker.modName = g_currentModName
 NWT_netWorthTracker.debug = false
 
+source(NWT_netWorthTracker.dir .. "src/NWT_historyManager.lua")
+source(NWT_netWorthTracker.dir .. "src/dao/NWT_historyDao.lua")
 source(NWT_netWorthTracker.dir .. "src/gui/NWT_inGameMenuNetWorthTracker.lua")
+source(NWT_netWorthTracker.dir .. "src/gui/NWT_historyDelegate.lua")
+source(NWT_netWorthTracker.dir .. "src/gui/NWT_farmValueDelegate.lua")
 source(NWT_netWorthTracker.dir .. "src/model/NWT_entry.lua")
+source(NWT_netWorthTracker.dir .. "src/model/NWT_history.lua")
 source(NWT_netWorthTracker.dir .. "src/util/NWT_fillCalcUtil.lua")
+source(NWT_netWorthTracker.dir .. "src/util/NWT_historyUtil.lua")
 source(NWT_netWorthTracker.dir .. "src/util/NWT_netWorthCalcUtil.lua")
 
+
 function NWT_netWorthTracker:loadMap()
-	local guiNetWorthTracker = NWT_inGameMenuNetWorthTracker.new(g_i18n) 
+	local guiNetWorthTracker = NWT_inGameMenuNetWorthTracker.new(g_i18n)
+	g_gui:loadProfiles(NWT_netWorthTracker.dir .. "gui/NWT_guiProfiles.xml")
 	g_gui:loadGui(NWT_netWorthTracker.dir .. "gui/NWT_inGameMenuNetWorthTracker.xml", "inGameMenuNetWorthTracker", guiNetWorthTracker, true)
 
 	NWT_netWorthTracker.fixInGameMenu(guiNetWorthTracker,"ingameMenuNetWorthTracker", {0,0,1024,1024}, 2, nil)
@@ -79,3 +87,4 @@ function NWT_netWorthTracker.fixInGameMenu(frame,pageName,uvs,position,predicate
 end
 
 addModEventListener(NWT_netWorthTracker)
+addModEventListener(NWT_historyManager)
