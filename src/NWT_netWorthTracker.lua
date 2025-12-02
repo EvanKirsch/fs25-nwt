@@ -21,7 +21,8 @@ source(NWT_netWorthTracker.dir .. "src/util/NWT_netWorthCalcUtil.lua")
 
 
 function NWT_netWorthTracker:loadMap()
-	local guiNetWorthTracker = NWT_inGameMenuNetWorthTracker.new(g_i18n) 
+	local guiNetWorthTracker = NWT_inGameMenuNetWorthTracker.new(g_i18n)
+	g_gui:loadProfiles(NWT_netWorthTracker.dir .. "gui/NWT_guiProfiles.xml")
 	g_gui:loadGui(NWT_netWorthTracker.dir .. "gui/NWT_inGameMenuNetWorthTracker.xml", "inGameMenuNetWorthTracker", guiNetWorthTracker, true)
 
 	NWT_netWorthTracker.fixInGameMenu(guiNetWorthTracker,"ingameMenuNetWorthTracker", {0,0,1024,1024}, 2, nil)
