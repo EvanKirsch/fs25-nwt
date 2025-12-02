@@ -62,7 +62,6 @@ function NWT_inGameMenuNetWorthTracker:onFrameOpen(element)
 end
 
 function NWT_inGameMenuNetWorthTracker:updateContent()
-    print("--- NWT update content ---")
     self:getEntryTable()
     self:getHistoryTable()
 
@@ -71,7 +70,6 @@ function NWT_inGameMenuNetWorthTracker:updateContent()
 end
 
 function NWT_inGameMenuNetWorthTracker:getEntryTable()
-    print("--- NWT get entry table ---")
     self.entryData = self.farmValueDelegate:getFarmEnteries()
 
     local fCashTotalValue = 0
@@ -112,7 +110,6 @@ function NWT_inGameMenuNetWorthTracker:getEntryTable()
 end
 
 function NWT_inGameMenuNetWorthTracker:getHistoryTable()
-    print("--- NWT get history table ---")
     self.historyData = self.farmHistoryDelegate:getFarmHistories()
 end
 
@@ -121,15 +118,11 @@ function NWT_inGameMenuNetWorthTracker:getNumberOfSections()
 end
 
 function NWT_inGameMenuNetWorthTracker:getNumberOfItemsInSection(list, section)
-    print("--- NWT get number of items in section ---")
-    print(self.entryData)
-    print(self.historyData)
     local items = #self.entryData
     if self.currentPage == self.CATEGRORIES.FARM_HISTORY then
         items = #self.historyData
     end
 
-    print(items)
     return items
 end
 
@@ -138,10 +131,6 @@ function NWT_inGameMenuNetWorthTracker:getTitleForSectionHeader(list, section)
 end
 
 function NWT_inGameMenuNetWorthTracker:populateCellForItemInSection(list, section, index, cell)
-    print("--- NWT populate for section ---")
-    print(list)
-    print(section)
-    print(index)
     if self.currentPage == self.CATEGRORIES.FARM_VALUE and cell:getAttribute("entryTitle") ~= nil then
         local loc_entryData = self.entryData[index]
         cell:getAttribute("entryTitle"):setText(loc_entryData.entryTitle)
@@ -168,12 +157,11 @@ function NWT_inGameMenuNetWorthTracker:populateCellForItemInSection(list, sectio
         cell:getAttribute("entryAmount"):setText(g_i18n:formatMoney(loc_entryData.entryAmount, 0, true, true))
 
     elseif self.currentPage == self.CATEGRORIES.FARM_HISTORY and cell:getAttribute("historyDay") ~= nil then
-        print(index)
         -- DebugUtil.printTableRecursively(self.historyData)
 
         local loc_historyData = self.historyData[index]
         cell:getAttribute("historyDay"):setText(loc_historyData.dayId)
-        cell:getAttribute("historyCategory"):setText(loc_historyData.category)
+        -- cell:getAttribute("historyCategory"):setText(loc_historyData.category)
         cell:getAttribute("historyAmount"):setText(g_i18n:formatMoney(loc_historyData.amount, 0, true, true))
 
     end
@@ -257,8 +245,6 @@ function NWT_inGameMenuNetWorthTracker:hideSortIcons()
 end
 
 function NWT_inGameMenuNetWorthTracker:initialize()
-    print("--- NWT init ---")
-
     self.subCategoryTabs[self.CATEGRORIES.FARM_VALUE] = self.inGameMenuNetWorth
     self.subCategoryTabs[self.CATEGRORIES.FARM_HISTORY] = self.inGameMenuNetWorthHistory
 
@@ -277,8 +263,6 @@ function NWT_inGameMenuNetWorthTracker:initialize()
 end
 
 function NWT_inGameMenuNetWorthTracker:updateSubCategoryPages(state)
-    print("--- NWT update pages ---")
-
     for i, _ in ipairs(self.subCategoryPages) do
         self.subCategoryPages[i]:setVisible(false)
         self.subCategoryTabs[i]:setSelected(false)

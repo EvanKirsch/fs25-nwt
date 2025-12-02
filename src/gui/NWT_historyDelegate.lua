@@ -12,10 +12,9 @@ function NWT_historyDelegate.new()
  end
 
 function NWT_historyDelegate:getFarmHistories()
-    print("--- NWT getFarmHistories ---")
     local farmId = g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
     local historyData = NWT_historyUtil:getHistories(farmId)
 
-    DebugUtil.printTableRecursively(historyData)
+    -- DebugUtil.printTableRecursively(historyData)
     return historyData
 end
