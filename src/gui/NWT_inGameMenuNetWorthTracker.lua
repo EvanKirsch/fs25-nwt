@@ -33,6 +33,7 @@ function NWT_inGameMenuNetWorthTracker.new(i18n, messageCenter)
     self.messageCenter = messageCenter
     self.subCategoryPages = {}
     self.subCategoryTabs = {}
+    self.currentPage = self.CATEGRORIES.FARM_VALUE
     self.farmValueDelegate = NWT_farmValueDelegate.new()
     self.farmHistoryDelegate = NWT_historyDelegate.new()
 
@@ -116,7 +117,7 @@ function NWT_inGameMenuNetWorthTracker:getHistoryTable()
 end
 
 function NWT_inGameMenuNetWorthTracker:getNumberOfSections()
-    return 2
+    return 1
 end
 
 function NWT_inGameMenuNetWorthTracker:getNumberOfItemsInSection(list, section)
@@ -124,7 +125,7 @@ function NWT_inGameMenuNetWorthTracker:getNumberOfItemsInSection(list, section)
     print(self.entryData)
     print(self.historyData)
     local items = #self.entryData
-    if section == self.CATEGRORIES.FARM_HISTORY then
+    if self.currentPage == self.CATEGRORIES.FARM_HISTORY then
         items = #self.historyData
     end
 
@@ -141,7 +142,7 @@ function NWT_inGameMenuNetWorthTracker:populateCellForItemInSection(list, sectio
     print(list)
     print(section)
     print(index)
-    if section == self.CATEGRORIES.FARM_VALUE and cell:getAttribute("entryTitle") ~= nil then
+    if self.currentPage == self.CATEGRORIES.FARM_VALUE and cell:getAttribute("entryTitle") ~= nil then
         local loc_entryData = self.entryData[index]
         cell:getAttribute("entryTitle"):setText(loc_entryData.entryTitle)
 
@@ -166,7 +167,7 @@ function NWT_inGameMenuNetWorthTracker:populateCellForItemInSection(list, sectio
 
         cell:getAttribute("entryAmount"):setText(g_i18n:formatMoney(loc_entryData.entryAmount, 0, true, true))
 
-    elseif section == self.CATEGRORIES.FARM_HISTORY and cell:getAttribute("historyDay") ~= nil then
+    elseif self.currentPage == self.CATEGRORIES.FARM_HISTORY and cell:getAttribute("historyDay") ~= nil then
         print(index)
         -- DebugUtil.printTableRecursively(self.historyData)
 
@@ -284,4 +285,7 @@ function NWT_inGameMenuNetWorthTracker:updateSubCategoryPages(state)
     end
     self.subCategoryPages[state]:setVisible(true)
     self.subCategoryTabs[state]:setSelected(true)
+    self.currentPage = state
+    self.entryTable:reloadData()
+    self.historyTable:reloadData()
 end
