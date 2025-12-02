@@ -8,48 +8,50 @@ NWT_historyDao.KEY = "history"
 
 function NWT_historyDao:loadFromXMLFile()
   local savegameDir = g_currentMission.missionInfo.savegameDirectory
-  local xmlPath = savegameDir.."/nwt_history.xml"
-  local xmlFile = XMLFile.loadIfExists("nwt_history", xmlPath, NWT_historyDao.KEY)
+  if savegameDir ~= nil then
+    local xmlPath = savegameDir.."/nwt_history.xml"
+    local xmlFile = XMLFile.loadIfExists("nwt_history", xmlPath, NWT_historyDao.KEY)
 
-  if xmlFile ~= nil then
-    -- g_farmManager.getFarms() - NPEs, I assume it is not fully loaded
-    -- g_farmManager.farmIdToFarm - the ids are wrong?
-    -- TODO - figure out how to get farmIds?
-    for farmIdIndex = 0, 16 do
-      for dayIndex = 0, g_currentMission.environment.currentDay do
-        for _, categoryId in pairs(g_nwt_historyManager.categories) do
+    if xmlFile ~= nil then
+      -- g_farmManager.getFarms() - NPEs, I assume it is not fully loaded
+      -- g_farmManager.farmIdToFarm - the ids are wrong?
+      -- TODO - figure out how to get farmIds?
+      for farmIdIndex = 0, 16 do
+        for dayIndex = 0, g_currentMission.environment.currentDay do
+          for _, categoryId in pairs(g_nwt_historyManager.categories) do
 
-          local valueKey = NWT_historyDao.KEY
-            ..string.format(".farm(%d)", farmIdIndex)
-            ..string.format(".day(%d)", dayIndex)
-            ..string.format(".%s", categoryId)
+            local valueKey = NWT_historyDao.KEY
+              ..string.format(".farm(%d)", farmIdIndex)
+              ..string.format(".day(%d)", dayIndex)
+              ..string.format(".%s", categoryId)
 
-          if xmlFile:hasProperty(valueKey) then
-            local farmId = xmlFile:getInt(valueKey.."#farmId")
-            local dayId = xmlFile:getInt(valueKey.."#dayId")
-            local category = xmlFile:getString(valueKey.."#category")
-            local amount = xmlFile:getFloat(valueKey.."#amount")
+            if xmlFile:hasProperty(valueKey) then
+              local farmId = xmlFile:getInt(valueKey.."#farmId")
+              local dayId = xmlFile:getInt(valueKey.."#dayId")
+              local category = xmlFile:getString(valueKey.."#category")
+              local amount = xmlFile:getFloat(valueKey.."#amount")
 
-            if farmId ~= nil
-             and dayId ~= nil
-             and category ~= nil
-             and amount ~= nil then
-              local valueHistory = NWT_history.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-              valueHistory:init(farmId, dayId, category, amount)
-              valueHistory:register()
+              if farmId ~= nil
+               and dayId ~= nil
+               and category ~= nil
+               and amount ~= nil then
+                local valueHistory = NWT_history.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
+                valueHistory:init(farmId, dayId, category, amount)
+                valueHistory:register()
 
-              table.insert(g_nwt_historyManager.histories, valueHistory)
+                table.insert(g_nwt_historyManager.histories, valueHistory)
 
+              end
             end
-          end
 
-        end -- end for categories
-      end -- end for days
-    end -- end for farms
+          end -- end for categories
+        end -- end for days
+      end -- end for farms
 
-    xmlFile:delete()
+      xmlFile:delete()
 
-  end
+    end -- xml file exists
+  end -- savegame exits
 
   -- DebugUtil.printTableRecursively(g_nwt_historyManager.histories)
 
