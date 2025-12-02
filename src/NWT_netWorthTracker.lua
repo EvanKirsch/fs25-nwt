@@ -11,9 +11,12 @@ NWT_netWorthTracker.debug = false
 source(NWT_netWorthTracker.dir .. "src/NWT_historyManager.lua")
 source(NWT_netWorthTracker.dir .. "src/dao/NWT_historyDao.lua")
 source(NWT_netWorthTracker.dir .. "src/gui/NWT_inGameMenuNetWorthTracker.lua")
+source(NWT_netWorthTracker.dir .. "src/gui/NWT_historyDelegate.lua")
+source(NWT_netWorthTracker.dir .. "src/gui/NWT_farmValueDelegate.lua")
 source(NWT_netWorthTracker.dir .. "src/model/NWT_entry.lua")
 source(NWT_netWorthTracker.dir .. "src/model/NWT_history.lua")
 source(NWT_netWorthTracker.dir .. "src/util/NWT_fillCalcUtil.lua")
+source(NWT_netWorthTracker.dir .. "src/util/NWT_historyUtil.lua")
 source(NWT_netWorthTracker.dir .. "src/util/NWT_netWorthCalcUtil.lua")
 
 

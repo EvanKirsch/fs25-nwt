@@ -69,8 +69,22 @@
                 <Text profile="NWT_inGameMenuFooterRight" position="-20px -5px" id="netWorthTotalValue"/>
             </GuiElement>
          </GuiElement>
+
          <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="inGameMenuNetWorthHistoryPage" name="layout">
+            <SmoothList profile="NWT_list" size="100% 550px" id="historyTable" >
+                <ListItem profile="NWT_listItem" >
+                    <Text profile="NWT_rowCellLeft" position="20px 0px" size="300px 20px" name="historyDay"/>
+                    <Text profile="NWT_rowCellLeft" position="400px 0px" size="300px 20px" name="historyCategory"/>
+                    <Text profile="NWT_rowCellRight" position="-20px 0px" size="500px 20px" name="historyAmount"/>
+                </ListItem>
+            </SmoothList>
+
+            <ThreePartBitmap profile="NWT_inGameMenuSlider" >
+                <Slider profile="fs25_listSlider" dataElementId="historyTable"/>
+            </ThreePartBitmap>
+
          </GuiElement>
+
     </GuiElement>
 
 
