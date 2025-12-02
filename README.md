@@ -1,5 +1,5 @@
-# NWT
-NWT adds a new screen to FS25 to easily view your farm's value. It is not currently avaiable on the mod hub and is awaiting review by Giants software. If you would like to use the mod before it becomes avaiable see the "Manual Install Instructions" section below.
+# NWT - Farming Simulator 25 Net Worth Tracker
+NWT adds a new screen to FS25 to easily view your farm's value and track the value over time. If you would like to use the mod before it becomes avaiable see the "Manual Install Instructions" section below.
 ![screenshot 1](https://github.com/EvanKirsch/fs25_nwt/blob/master/screenshoots/Screenshot_1.jpg)
 
 ### Manual Install Instructions
@@ -10,11 +10,6 @@ Additional installiation support availiable in my [YouTube demo](https://www.you
 
 ### Manual Build Instructions
 `git archive -o FS25_netWorthTracker.zip HEAD`
-
-### Known Issues
-- Animal values are not accurate if health < 100% 
-- Horse values are not accurate 
-- Fill currently in leased vehicles is not incuded in fill calcuations
 
 ### Implementaion Details
 Produces a menu tallying the total value of a users farm. Entries are not included if they are for an amount equal to 0.
@@ -43,8 +38,3 @@ The types of entries:
   - Cash : Cash in users account.
   - Loan : Amount of loan taken out by the user. This is natively agregated by the loan system.
     - Mods to the loan system are currently not supported
-
-### Future Feature List 
-- Add Fill Icons
-- Column Filters
-- Dynamic Totals
