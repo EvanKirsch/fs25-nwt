@@ -50,8 +50,8 @@ function NWT_historyDao:loadFromXMLFile()
 
       xmlFile:delete()
 
-    end -- xml file exists
-  end -- savegame exits
+    end -- end xml file exists
+  end -- end savegame exits
 
   -- DebugUtil.printTableRecursively(g_nwt_historyManager.histories)
 
