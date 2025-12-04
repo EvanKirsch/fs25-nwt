@@ -22,7 +22,7 @@ NWT_inGameMenuNetWorthTracker.NUM_CATEGORIES = #NWT_inGameMenuNetWorthTracker.CA
 local lineItemSort = 0
 local categorySort = 0
 local valueSort = 0
-local daySort = 0
+local daySort = 1
 
 NWT_inGameMenuNetWorthTracker._mt = Class(NWT_inGameMenuNetWorthTracker, TabbedMenuFrameElement)
 
@@ -111,6 +111,7 @@ end
 
 function NWT_inGameMenuNetWorthTracker:getHistoryTable()
     self.historyData = self.farmHistoryDelegate:getFarmHistories()
+    table.sort(self.historyData, function (a, b) return a.dayId > b.dayId end)
 end
 
 function NWT_inGameMenuNetWorthTracker:getNumberOfSections()
@@ -160,12 +161,17 @@ function NWT_inGameMenuNetWorthTracker:populateCellForItemInSection(list, sectio
         -- DebugUtil.printTableRecursively(self.historyData)
 
         local loc_historyData = self.historyData[index]
-        cell:getAttribute("historyDay"):setText(loc_historyData.dayId)
-        -- cell:getAttribute("historyCategory"):setText(loc_historyData.category)
+        cell:getAttribute("historyDay"):setText(self:getDateString(loc_historyData))
         cell:getAttribute("historyAmount"):setText(g_i18n:formatMoney(loc_historyData.amount, 0, true, true))
 
     end
 
+end
+
+function NWT_inGameMenuNetWorthTracker:getDateString(historyData)
+    return g_i18n:formatPeriod(historyData.periodId or 0, true)
+        .. " " .. tostring(historyData.dayInPeriod or 1)
+        .. ", " .. tostring(2024 + historyData.year or 0)
 end
 
 function NWT_inGameMenuNetWorthTracker:onClickLineItemSort(entry)
