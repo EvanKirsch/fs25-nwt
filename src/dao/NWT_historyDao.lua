@@ -28,15 +28,15 @@ function NWT_historyDao:loadFromXMLFile()
             if xmlFile:hasProperty(valueKey) then
               local farmId = xmlFile:getInt(valueKey.."#farmId")
               local dayId = xmlFile:getInt(valueKey.."#dayId")
-              local category = xmlFile:getString(valueKey.."#category")
-              local amount = xmlFile:getFloat(valueKey.."#amount")
+              local periodId = xmlFile:getInt(valueKey.."#periodId") or 0
+              local dayInPeriod = xmlFile:getInt(valueKey.."#dayInPeriod") or 0
+              local year = xmlFile:getInt(valueKey.."#year") or 0
+              local category = xmlFile:getString(valueKey.."#category") or ""
+              local amount = xmlFile:getFloat(valueKey.."#amount") or 0.0
 
-              if farmId ~= nil
-               and dayId ~= nil
-               and category ~= nil
-               and amount ~= nil then
+              if farmId ~= nil and dayId ~= nil then
                 local valueHistory = NWT_history.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-                valueHistory:init(farmId, dayId, category, amount)
+                valueHistory:init(farmId, dayId, periodId, dayInPeriod, year, category, amount)
                 valueHistory:register()
 
                 table.insert(g_nwt_historyManager.histories, valueHistory)
@@ -72,8 +72,11 @@ function NWT_historyDao:saveToXMLFile()
 
     xmlFile:setInt(valueKey.."#farmId", history.farmId)
     xmlFile:setInt(valueKey.."#dayId", history.dayId)
-    xmlFile:setString(valueKey.."#category", history.category)
-    xmlFile:setFloat(valueKey.."#amount", history.amount)
+    xmlFile:setInt(valueKey.."#periodId", history.periodId or 0)
+    xmlFile:setInt(valueKey.."#dayInPeriod", history.dayInPeriod or 0)
+    xmlFile:setInt(valueKey.."#year", history.year or 0)
+    xmlFile:setString(valueKey.."#category", history.category or "")
+    xmlFile:setFloat(valueKey.."#amount", history.amount or 0.0)
 
   end
 

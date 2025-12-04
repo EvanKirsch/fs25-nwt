@@ -15,9 +15,12 @@ function NWT_history.new(isServer, isClient, customMt)
     return self
 end
 
-function NWT_history:init(farmId, dayId, category, amount)
+function NWT_history:init(farmId, dayId, periodId, dayInPeriod, year, category, amount)
     self.farmId = farmId
     self.dayId = dayId
+    self.periodId = periodId
+    self.dayInPeriod = dayInPeriod
+    self.year = year
     self.category = category
     self.amount = amount
 end
