@@ -63,5 +63,6 @@ YouTube-Demo [EN]: https://www.youtube.com/watch?v=xL4-8oikK5Q
     <sourceFile filename="src/model/NWT_history.lua" />
     <sourceFile filename="src/util/NWT_fillCalcUtil.lua" />
     <sourceFile filename="src/util/NWT_netWorthCalcUtil.lua" />
+    <sourceFile filename="src/dev/NWT_console.lua" />
   </extraSourceFiles>
 </modDesc>

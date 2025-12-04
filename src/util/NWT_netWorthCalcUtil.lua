@@ -173,3 +173,13 @@ function NWT_netWorthCalcUtil:getFormatedAge(age)
 
     return age .. " " .. unit
 end
+
+function NWT_netWorthCalcUtil:getFarmValue(farmId)
+    local entryData = self:getEntries(farmId)
+    local fNetWorthTotalValue = 0
+    for _, entry in pairs(entryData) do
+      fNetWorthTotalValue = fNetWorthTotalValue + entry.entryAmount
+
+    end
+    return fNetWorthTotalValue
+end

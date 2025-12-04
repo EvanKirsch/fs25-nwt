@@ -169,7 +169,7 @@ function NWT_inGameMenuNetWorthTracker:populateCellForItemInSection(list, sectio
 end
 
 function NWT_inGameMenuNetWorthTracker:getDateString(historyData)
-    return g_i18n:formatPeriod(historyData.periodId or 0, true)
+    return g_i18n:formatPeriod(historyData.periodId or 0, false)
         .. " " .. tostring(historyData.dayInPeriod or 1)
         .. ", " .. tostring(2024 + historyData.year or 0)
 end
