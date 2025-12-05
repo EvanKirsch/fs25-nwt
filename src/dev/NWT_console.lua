@@ -67,9 +67,11 @@ function NWT_Console:buildHistory()
       currentValue = NWT_netWorthCalcUtil:getFarmValue(farmId)
   end
 
+  -- reasonable steps, not to any target
   local valueStep = currentValue / ((year * 12) + periodId)
 
-  day = day - 1 -- start on previous day
+  -- start on previous day
+  day = day - 1
   periodId = periodId - 1
   if (periodId < 0) then
       year = year - 1
