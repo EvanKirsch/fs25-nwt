@@ -55,14 +55,17 @@ YouTube-Demo [EN]: https://www.youtube.com/watch?v=xL4-8oikK5Q
   <multiplayer supported="true"/>
   <extraSourceFiles>
     <sourceFile filename="src/NWT_netWorthTracker.lua" />
+    <sourceFile filename="src/NWT_historyManager.lua" />
     <sourceFile filename="src/dao/NWT_historyDao.lua" />
+    <sourceFile filename="src/dev/NWT_console.lua" />
     <sourceFile filename="src/gui/NWT_inGameMenuNetWorthTracker.lua" />
     <sourceFile filename="src/gui/NWT_historyDelegate.lua" />
     <sourceFile filename="src/gui/NWT_farmValueDelegate.lua" />
     <sourceFile filename="src/model/NWT_entry.lua" />
     <sourceFile filename="src/model/NWT_history.lua" />
+    <sourceFile filename="src/util/NWT_csvUtil.lua" />
     <sourceFile filename="src/util/NWT_fillCalcUtil.lua" />
+    <sourceFile filename="src/util/NWT_historyUtil.lua" />
     <sourceFile filename="src/util/NWT_netWorthCalcUtil.lua" />
-    <sourceFile filename="src/dev/NWT_console.lua" />
   </extraSourceFiles>
 </modDesc>
