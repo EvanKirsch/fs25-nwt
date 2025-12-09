@@ -1,7 +1,7 @@
 # NWT - Farming Simulator 25 Net Worth Tracker
 NWT adds a new screen to FS25 with two tabs to easily view your farm's value and track the value over time. 
 
-![screenshot 1](https://github.com/EvanKirsch/fs25_nwt/blob/master/screenshoots/Screenshot_1.jpg)
+![screenshot 1](https://github.com/EvanKirsch/fs25_nwt/blob/master/screenshots/Screenshot_1.jpg)
 
 ### Dev Console Commands
   - `nwtBuildHistory` - rebuilds fake value history from previous day
