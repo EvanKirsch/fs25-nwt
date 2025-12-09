@@ -1,6 +1,14 @@
-# NWT
-NWT adds a new screen to FS25 to easily view your farm's value. It is not currently avaiable on the mod hub and is awaiting review by Giants software. If you would like to use the mod before it becomes avaiable see the "Manual Install Instructions" section below.
+# NWT - Farming Simulator 25 Net Worth Tracker
+NWT adds a new screen to FS25 with two tabs to easily view your farm's value and track the value over time. 
+
 ![screenshot 1](https://github.com/EvanKirsch/fs25_nwt/blob/master/screenshoots/Screenshot_1.jpg)
+
+### Dev Console Commands
+  - `nwtBuildHistory` - rebuilds fake value history from previous day
+  - `nwtToggleDebug` - toggles debug mode for the mod
+  - `nwtGetFarmValue` - calculates the current farm value
+  - [ ] `nwtFarmValueToCSV <file location>` - exports the farms current value to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_farm_value.csv`
+  - `nwtFarmValueHistoryToCSV <file location>` - exports the farms value history to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_famr_value_history.csv`
 
 ### Manual Install Instructions
 1. Download `FS25_netWorthTracker.zip` from the latest release on the [releases page](https://github.com/EvanKirsch/fs25_nwt/releases)
@@ -10,11 +18,6 @@ Additional installiation support availiable in my [YouTube demo](https://www.you
 
 ### Manual Build Instructions
 `git archive -o FS25_netWorthTracker.zip HEAD`
-
-### Known Issues
-- Animal values are not accurate if health < 100% 
-- Horse values are not accurate 
-- Fill currently in leased vehicles is not incuded in fill calcuations
 
 ### Implementaion Details
 Produces a menu tallying the total value of a users farm. Entries are not included if they are for an amount equal to 0.
@@ -43,8 +46,3 @@ The types of entries:
   - Cash : Cash in users account.
   - Loan : Amount of loan taken out by the user. This is natively agregated by the loan system.
     - Mods to the loan system are currently not supported
-
-### Future Feature List 
-- Add Fill Icons
-- Column Filters
-- Dynamic Totals
