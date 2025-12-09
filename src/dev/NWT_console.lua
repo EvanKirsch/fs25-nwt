@@ -7,6 +7,8 @@ NWT_Console.commands = {
     { 'nwtBuildHistory', 'builds value history from last recorded day', 'buildHistory' },
     { 'nwtToggleDebug', 'toggles nwt debug mode', 'toggleDebug' },
     { 'nwtGetFarmValue', 'calculates farms current value', 'getFarmValue' },
+    { 'nwtFarmValueToCSV', 'exports farm value table to CSV, Optional argument of absulote output location', 'farmValueToCSV' },
+    { 'nwtFarmValueHistoryToCSV', 'exports farm value table to CSV, Optional argument of absolute output location', 'farmValueHistoryToCSV' },
 }
 
 local NWT_Console_mt = Class(NWT_Console, Object)
@@ -108,6 +110,28 @@ function NWT_Console:getFarmValue(farmId)
     local value = NWT_netWorthCalcUtil:getFarmValue(farmId)
     print("Value : " .. tostring(value))
     return value
+end
+
+function NWT_Console:farmValueToCSV(path)
+    farmId = farmId or g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
+    local entries = NWT_netWorthCalcUtil:getEntries(farmId)
+    if (path == nil) then
+        local savegameDir = g_currentMission.missionInfo.savegameDirectory
+        path = savegameDir .. "/nwt_farm_value.csv"
+    end
+    NWT_csvUtil:writeToFile(path, entries)
+    return path
+end
+
+function NWT_Console:farmValueHistoryToCSV(path)
+    farmId = farmId or g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
+    local histories = NWT_historyUtil:getHistories(farmId)
+    if (path == nil) then
+        local savegameDir = g_currentMission.missionInfo.savegameDirectory
+        path = savegameDir .. "/nwt_farm_value_history.csv"
+    end
+    NWT_csvUtil:writeToFile(path, histories)
+    return path
 end
 
 ---

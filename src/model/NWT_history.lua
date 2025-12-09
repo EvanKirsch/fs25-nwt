@@ -24,3 +24,21 @@ function NWT_history:init(farmId, dayId, periodId, dayInPeriod, year, category, 
     self.category = category
     self.amount = amount
 end
+
+function NWT_history:getCSVHeaders()
+    return "dayId" .. "," ..
+        "periodId" .. "," ..
+        "dayInPeriod" .. "," ..
+        "year" .. "," ..
+        "category" .. "," ..
+        "amount"
+end
+
+function NWT_history:toCSV()
+    return (self.dayId or "") .. "," ..
+        (self.periodId or "") .. "," ..
+        (self.dayInPeriod or "") .. "," ..
+        (self.year or "") .. "," ..
+        (self.category or "") .. "," ..
+        (self.amount or "")
+end
