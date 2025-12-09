@@ -1,6 +1,14 @@
 # NWT - Farming Simulator 25 Net Worth Tracker
-NWT adds a new screen to FS25 to easily view your farm's value and track the value over time. If you would like to use the mod before it becomes avaiable see the "Manual Install Instructions" section below.
+NWT adds a new screen to FS25 with two tabs to easily view your farm's value and track the value over time. 
+
 ![screenshot 1](https://github.com/EvanKirsch/fs25_nwt/blob/master/screenshoots/Screenshot_1.jpg)
+
+### Dev Console Commands
+  - `nwtBuildHistory` - rebuilds fake value history from previous day
+  - `nwtToggleDebug` - toggles debug mode for the mod
+  - `nwtGetFarmValue` - calculates the current farm value
+  - [ ] `nwtFarmValueToCSV <file location>` - exports the farms current value to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_farm_value.csv`
+  - `nwtFarmValueHistoryToCSV <file location>` - exports the farms value history to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_famr_value_history.csv`
 
 ### Manual Install Instructions
 1. Download `FS25_netWorthTracker.zip` from the latest release on the [releases page](https://github.com/EvanKirsch/fs25_nwt/releases)

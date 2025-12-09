@@ -1,27 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="104" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://validation.gdn.giants-software.com/xml/fs25/modDesc.xsd">
+<modDesc descVersion="105" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://validation.gdn.giants-software.com/xml/fs25/modDesc.xsd">
   <author>Evan Kirsch</author>
-  <version>1.0.0.2</version>
+  <version>1.1.0.0</version>
   <title>
       <en>Net Worth Tracker</en>
       <de>Vermögens-Tracker</de>
   </title>
   <description>
     <en><![CDATA[
-Adds menu screen to sumarize your farms total value in a balance sheet.
+Adds menu screen with a tab to sumarize your farms total value in a balance sheet and a history tab to summaries the history of your farms value.
 
-The each line item in the balance sheet contains a name, catagory, additional details and a value and are sortable by name, catagory and value.
+Farm Value:
+This is the summary of the current day's farm value. Each line item in the balance sheet contains a name, catagory, additional details and a value and are sortable by name, catagory and value.
 The line items are summaized into four subtotals:
   - Cash: cash and loans
   - Equipment
   - Property: land and buildings
   - Inventory: fill and livestock
 
+Farm Value History:
+This is a history of farm values recorded at the end of each day. Each line item notes a day and the value of the farm at the end of the day. It is sortable by date.
+
+Dev Console Commands:
+  - `nwtBuildHistory` - rebuilds fake value history from previous day
+  - `nwtToggleDebug` - toggles debug mode for the mod
+  - `nwtGetFarmValue` - calculates the current farm value
+  - `nwtFarmValueToCSV <file location>` - exports the farms current value to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_farm_value.csv`
+  - `nwtFarmValueHistoryToCSV <file location>` - exports the farms value history to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_famr_value_history.csv`
+
 GitHub link: https://github.com/EvanKirsch/fs25_nwt
-Youtube Demo [EN]: https://www.youtube.com/watch?v=xL4-8oikK5Q
+Youtube Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Changelog
 ---
+1.1.0.0:
+  - Adds Farm Value History tab
+  - Adds console commands `nwtBuildHistory`, `nwtToggleDebug`, `nwtGetFarmValue`, `nwtFarmValueToCSV`, `nwtFarmValueHistoryToCSV`
 1.0.0.2:
   - Updates German translations
   - Adds multiplayer support
@@ -29,8 +43,9 @@ Changelog
   - Initial release
     ]]></en>
     <de><![CDATA[
-Fügt einen Menübildschirm hinzu, der den Gesamtwert Ihrer Farm in einer Bilanz zusammenfasst.
+Fügt einen Menübildschirm mit einer Registerkarte zur Zusammenfassung des Gesamtwerts Ihrer Farm in einer Bilanz und einer Registerkarte "Verlauf" zur Zusammenfassung der Wertentwicklung Ihrer Farm hinzu.
 
+Bauernhof Wert:
 Jeder Bilanzposten enthält einen Namen, eine Kategorie, zusätzliche Details und einen Wert und kann nach Name, Kategorie und Wert sortiert werden.
 Die Posten werden in vier Zwischensummen zusammengefasst:
   - Bargeld: Bargeld und Darlehen
@@ -38,11 +53,24 @@ Die Posten werden in vier Zwischensummen zusammengefasst:
   - Eigentum: Ackerland und Gebäude
   - Inventar: Füllmittel und Viehbestand
 
+Hofwertgeschichte:
+Dies ist eine Übersicht der landwirtschaftlichen Betriebswerte, die jeweils am Ende eines Tages erfasst wurden. Jeder Eintrag enthält den entsprechenden Tag und den Wert des Betriebs am Ende des Tages. Die Daten sind nach Datum sortierbar.
+
+Befehle für die Entwicklerkonsole:
+  - `nwtBuildHistory` – Stellt den simulierten Wertverlauf des Vortages wieder her.
+  - `nwtToggleDebug` – Aktiviert/Deaktiviert den Debug-Modus für die Mod.
+  - `nwtGetFarmValue` – Berechnet den aktuellen Wert der Farm.
+  - `nwtFarmValueToCSV <Dateipfad>` – Exportiert den aktuellen Wert der Farm als CSV-Datei. Optionaler Parameter: Absoluter Dateipfad der zu speichernden Datei. Standardmäßig wird die Datei unter `<Spielstandverzeichnis>/nwt_farm_value.csv` gespeichert.
+  - `nwtFarmValueHistoryToCSV <Dateipfad>` – Exportiert den Wertverlauf der Farm als CSV-Datei. Optionaler Parameter: Absoluter Dateipfad der zu speichernden Datei. Standardmäßig wird die Datei unter `<Spielstandverzeichnis>/nwt_farm_value_history.csv` gespeichert.
+
 GitHub-Link: https://github.com/EvanKirsch/fs25_nwt
-YouTube-Demo [EN]: https://www.youtube.com/watch?v=xL4-8oikK5Q
+YouTube-Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Änderungsprotokoll
 ---
+1.1.0.0:
+  - Fügt die Registerkarte Hofwertgeschichte hinzu
+  - fügt Konsolenbefehle `nwtBuildHistory`, `nwtToggleDebug`, `nwtGetFarmValue`, `nwtFarmValueToCSV`, `nwtFarmValueHistoryToCSV` hinzu
 1.0.0.2:
   - Deutsche Übersetzungen aktualisiert
   - Mehrspielerunterstützung hinzugefügt
