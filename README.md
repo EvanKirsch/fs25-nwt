@@ -7,7 +7,7 @@ NWT adds a new screen to FS25 with two tabs to easily view your farm's value and
   - `nwtBuildHistory` - rebuilds fake value history from previous day
   - `nwtToggleDebug` - toggles debug mode for the mod
   - `nwtGetFarmValue` - calculates the current farm value
-  - [ ] `nwtFarmValueToCSV <file location>` - exports the farms current value to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_farm_value.csv`
+  - `nwtFarmValueToCSV <file location>` - exports the farms current value to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_farm_value.csv`
   - `nwtFarmValueHistoryToCSV <file location>` - exports the farms value history to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_famr_value_history.csv`
 
 ### Manual Install Instructions
