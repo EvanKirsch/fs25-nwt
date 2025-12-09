@@ -31,12 +31,7 @@ end
 
 function NWT_historyManager:recordFarmValue()
   local farmId = g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
-  local entryData = NWT_netWorthCalcUtil:getEntries(farmId)
-  local fNetWorthTotalValue = 0
-  for _, entry in pairs(entryData) do
-    fNetWorthTotalValue = fNetWorthTotalValue + entry.entryAmount
-
-  end
+  local fNetWorthTotalValue = NWT_netWorthCalcUtil:getFarmValue(farmId)
   local dayId = g_currentMission.environment.currentMonotonicDay
   local periodId = g_currentMission.environment.currentPeriod
   local dayInPeriod = g_currentMission.environment.currentDayInPeriod

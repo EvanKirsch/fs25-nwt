@@ -22,3 +22,19 @@ function NWT_entry:init(farmId, title, category, subCategory, details, amount)
     self.details = details
     self.entryAmount = amount
 end
+
+function NWT_entry:getCSVHeaders()
+    return "tile" .. "," ..
+        "category" .. "," ..
+        "subCategory" .. "," ..
+        "details" .. "," ..
+        "amount"
+end
+
+function NWT_entry:toCSV() -- putting in quotes to escape possible commas
+    return "\"" .. (self.entryTitle or "") .. "\"" .. "," ..
+        "\"" .. (self.category or "") .. "\"" .. "," ..
+        "\"" .. (self.subCategory or "") .. "\"" .. "," ..
+        "\"" .. (self.details or "") .. "\"" .. "," ..
+        (self.entryAmount or "")
+end
