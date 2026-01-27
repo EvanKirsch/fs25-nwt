@@ -7,7 +7,7 @@ Please open a Github issue under the issues tab and tag it as a `bug`
 ## Translations
 
 1. Add translation file in `translation/translation_XX.xml` directory where `XX` is the code of the language code found below
-1. Create a pull request 
+1. Create a pull request add [@EvanKirsch](https://github.com/EvanKirsch) as a reviewer
 
 #### FS25 Languages:
 | Language                                        | Code |
@@ -42,4 +42,4 @@ Please open a Github issue under the issues tab and tag it as a `bug`
 ## Code Changes
 
 1. Create a Github issue describing the change or enhancement 
-1. Create a pull request and link the Github issue 
+1. Create a pull request and link the Github issue and add [@EvanKirsch](https://github.com/EvanKirsch) as a reviewer
