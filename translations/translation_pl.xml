@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <translationContributors>Ziuta</translationContributors>
+    <texts>
+        <text name="ui_header_title" text="Wycena gospodarstwa"/>
+        <text name="ui_header_lineitem" text="Element pozycji"/>
+        <text name="ui_header_category" text="Kategoria"/>
+        <text name="ui_header_details" text="Szczegóły"/>
+        <text name="ui_header_value" text="Wartość"/>
+        <text name="ui_header_net_worth" text="Stan majątkowy"/>
+        <text name="ui_header_day" text="Dzień"/>
+        <text name="ui_footer_total" text="Razem"/>
+        <text name="ui_farm_value" text="Wartość gospodarstwa"/>
+        <text name="ui_farm_value_history" text="Historia wartości gospodarstwa"/>
+        <text name="table_cat_cash" text="Gotówka"/>
+        <text name="table_cat_equipment" text="Sprzęt"/>
+        <text name="table_cat_property" text="Nieruchomość"/>
+        <text name="table_cat_inventory" text="Asortyment"/>
+        <text name="table_cash" text="Gotówka"/>
+        <text name="table_loan" text="Pożyczka"/>
+        <text name="table_placeable" text="Budynek"/>
+        <text name="table_livestock" text="Inwentarz"/>
+        <text name="table_fill" text="Towary"/>
+        <text name="table_land" text="Działka"/>
+        <text name="details_age" text="Wiek"/>
+        <text name="details_age_month_unit" text="mies."/>
+        <text name="details_age_year_unit" text="l."/>
+        <text name="details_operating_time" text="godz."/>
+    </texts>
+</l10n>
