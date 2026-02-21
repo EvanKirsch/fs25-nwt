@@ -35,6 +35,7 @@ Changelog
 ---
 1.1.0.1:
   - Adds PL translation
+  - Removes GIANTS `Object` superclass from instaniated data objects to reduce object clutter resulting in reduced server performance
 1.1.0.0:
   - Adds Farm Value History tab
   - Adds console commands `nwtBuildHistory`, `nwtToggleDebug`, `nwtGetFarmValue`, `nwtFarmValueToCSV`, `nwtFarmValueHistoryToCSV`
@@ -70,9 +71,12 @@ YouTube-Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Änderungsprotokoll
 ---
+1.1.0.1:
+  - Fügt pl-Übersetzung hinzu
+  - Entfernt die GIANTS `Object` aus instanziierten Datenobjekten, um die Objektanzahl zu reduzieren und dadurch die Serverleistung zu verringern.
 1.1.0.0:
   - Fügt die Registerkarte Hofwertgeschichte hinzu
-  - fügt Konsolenbefehle `nwtBuildHistory`, `nwtToggleDebug`, `nwtGetFarmValue`, `nwtFarmValueToCSV`, `nwtFarmValueHistoryToCSV` hinzu
+  - Fügt Konsolenbefehle `nwtBuildHistory`, `nwtToggleDebug`, `nwtGetFarmValue`, `nwtFarmValueToCSV`, `nwtFarmValueHistoryToCSV` hinzu
 1.0.0.2:
   - Deutsche Übersetzungen aktualisiert
   - Mehrspielerunterstützung hinzugefügt
