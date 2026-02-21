@@ -35,7 +35,7 @@ Changelog
 ---
 1.1.0.1:
   - Adds PL translation
-  - Removes GIANTS `Object` superclass from instaniated data objects to reduce object clutter resulting in reduced server performance
+  - Removes GIANTS `Object` superclass from instantiated data objects to reduce object clutter resulting in reduced server performance
 1.1.0.0:
   - Adds Farm Value History tab
   - Adds console commands `nwtBuildHistory`, `nwtToggleDebug`, `nwtGetFarmValue`, `nwtFarmValueToCSV`, `nwtFarmValueHistoryToCSV`
