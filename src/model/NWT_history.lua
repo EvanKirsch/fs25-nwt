@@ -5,24 +5,20 @@
 
 NWT_history = {}
 
-local NWT_history_mt = Class(NWT_history, Object)
+function NWT_history:new(farmId, dayId, periodId, dayInPeriod, year, category, amount)
+    local prototype = {}
+    setmetatable(prototype, self)
+    self.__index = self
 
-InitObjectClass(NWT_history, "NWT_history")
+    prototype.farmId = farmId
+    prototype.dayId = dayId
+    prototype.periodId = periodId
+    prototype.dayInPeriod = dayInPeriod
+    prototype.year = year
+    prototype.category = category
+    prototype.amount = amount
 
-function NWT_history.new(isServer, isClient, customMt)
-    local self = Object.new(isServer, isClient, customMt or NWT_history_mt)
-
-    return self
-end
-
-function NWT_history:init(farmId, dayId, periodId, dayInPeriod, year, category, amount)
-    self.farmId = farmId
-    self.dayId = dayId
-    self.periodId = periodId
-    self.dayInPeriod = dayInPeriod
-    self.year = year
-    self.category = category
-    self.amount = amount
+    return prototype
 end
 
 function NWT_history:getCSVHeaders()

@@ -35,10 +35,7 @@ function NWT_historyDao:loadFromXMLFile()
               local amount = xmlFile:getFloat(valueKey.."#amount") or 0.0
 
               if farmId ~= nil and dayId ~= nil then
-                local valueHistory = NWT_history.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-                valueHistory:init(farmId, dayId, periodId, dayInPeriod, year, category, amount)
-                valueHistory:register()
-
+                local valueHistory = NWT_history:new(farmId, dayId, periodId, dayInPeriod, year, category, amount)
                 table.insert(g_nwt_historyManager.histories, valueHistory)
 
               end

@@ -82,9 +82,7 @@ function NWT_Console:buildHistory()
 
   while (year >= 0 and day >= 0) do
       local value = valueStep * ((year * 12) + periodId)
-      local history = NWT_history.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-      history:init(farmId, day, periodId, 1, year, g_nwt_historyManager.categories.Total, value)
-      history:register()
+      local history = NWT_history:new(farmId, day, periodId, 1, year, g_nwt_historyManager.categories.Total, value)
       table.insert(g_nwt_historyManager.histories, history)
       print("Adding History Record:" .. tostring(history))
       print("   " .. tostring(day) .. ", ".. tostring(periodId) .. ", " .. tostring(year) .. ", " .. tostring(value))

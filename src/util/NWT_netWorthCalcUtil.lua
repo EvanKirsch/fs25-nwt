@@ -14,9 +14,7 @@ function NWT_netWorthCalcUtil:getEntries(farmId)
     local cashSubCategory = g_i18n:getText("table_cash")
     local cashAmount = g_currentMission:getMoney()
 
-    local cashAsset = NWT_entry.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-    cashAsset:init(farmId, cashSubCategory, cashCategory, cashSubCategory, "", cashAmount)
-    cashAsset:register()
+    local cashAsset = NWT_entry:new(farmId, cashSubCategory, cashCategory, cashSubCategory, "", cashAmount)
     table.insert(entryTable, cashAsset)
 
     local loanAmount = self:calculateLoanAmount(farmId)
@@ -24,9 +22,7 @@ function NWT_netWorthCalcUtil:getEntries(farmId)
         local loanCategory = g_i18n:getText("table_cat_cash")
         local loanSubCategory = g_i18n:getText("table_loan")
 
-        local loanAsset = NWT_entry.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-        loanAsset:init(farmId, loanSubCategory, loanCategory, loanSubCategory, "", -1 * loanAmount)
-        loanAsset:register()
+        local loanAsset = NWT_entry:new(farmId, loanSubCategory, loanCategory, loanSubCategory, "", -1 * loanAmount)
         table.insert(entryTable, loanAsset)
     end
 
@@ -61,9 +57,7 @@ function NWT_netWorthCalcUtil:getEquipmentEntries(entryTable, farmId)
             local vehicleHoursTxt = g_i18n:getText("details_operating_time") .. ": " .. tostring(vehicleHours)
             local assetDetails = vehicleAgeTxt .. ", " .. vehicleHoursTxt
 
-            local asset = NWT_entry.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-            asset:init(farmId, vehicle:getFullName(), assetCategory, assetSubCategory, assetDetails, vehicle:getSellPrice())
-            asset:register()
+            local asset = NWT_entry:new(farmId, vehicle:getFullName(), assetCategory, assetSubCategory, assetDetails, vehicle:getSellPrice())
             table.insert(entryTable, asset)
 
         end
@@ -79,9 +73,7 @@ function NWT_netWorthCalcUtil:getPlaceableEntries(entryTable, farmId)
             local assetSubCategory = g_i18n:getText("table_placeable")
             local assetDetails = g_i18n:getText("details_age") .. ": "  .. self:getFormatedAge(placeable.age)
 
-            local asset = NWT_entry.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-            asset:init(farmId, placeable:getName(), assetCategory, assetSubCategory, assetDetails, placeable:getSellPrice())
-            asset:register()
+            local asset = NWT_entry:new(farmId, placeable:getName(), assetCategory, assetSubCategory, assetDetails, placeable:getSellPrice())
             table.insert(entryTable, asset)
 
         end
@@ -117,9 +109,7 @@ function NWT_netWorthCalcUtil:getLivestockEntries(entryTable, farmId)
                 local assetCategory = g_i18n:getText("table_cat_inventory")
                 local assetSubCategory = g_i18n:getText("table_livestock")
 
-                local asset = NWT_entry.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-                asset:init(farmId, description, assetCategory, assetSubCategory, assetDetails, livestockValue)
-                asset:register()
+                local asset = NWT_entry:new(farmId, description, assetCategory, assetSubCategory, assetDetails, livestockValue)
                 table.insert(entryTable, asset)
 
             end
@@ -152,9 +142,7 @@ function NWT_netWorthCalcUtil:getFarmlandEntries(entryTable, farmId)
             local assetDetails = "Size: " .. string.format("%.2f", farmland.areaInHa) .. " Ha"
 
             -- TODO - add support acres
-            local asset = NWT_entry.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-            asset:init(farmId, assetName, assetCategory, assetSubCategory, assetDetails, farmland.price)
-            asset:register()
+            local asset = NWT_entry:new(farmId, assetName, assetCategory, assetSubCategory, assetDetails, farmland.price)
             table.insert(entryTable, asset)
 
         end

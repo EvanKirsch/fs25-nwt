@@ -206,9 +206,7 @@ function NWT_fillCalcUtil:fillEntryCalculator(fillTable, farmId, storageFillLeve
                     local assetCategory = g_i18n:getText("table_cat_inventory")
                     local assetSubCategory = g_i18n:getText("table_fill")
 
-                    asset = NWT_entry.new(g_currentMission:getIsServer(), g_currentMission:getIsClient())
-                    asset:init(farmId, entryTitle, assetCategory, assetSubCategory, details, fillValue)
-                    asset:register()
+                    asset = NWT_entry:new(farmId, entryTitle, assetCategory, assetSubCategory, details, fillValue)
 
                 else
                     asset = fillTable[fillId]
