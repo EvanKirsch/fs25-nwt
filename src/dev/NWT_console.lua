@@ -53,7 +53,7 @@ function NWT_Console:buildHistory()
       minHistory = self:getMinHistory(farmId, currentHistories)
   end
 
-  local dayId = nil
+  local day = nil
   local periodId = nil
   local year = nil
   local currentValue = nil
@@ -111,7 +111,7 @@ function NWT_Console:getFarmValue(farmId)
 end
 
 function NWT_Console:farmValueToCSV(path)
-    farmId = farmId or g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
+    local farmId = g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
     local entries = NWT_netWorthCalcUtil:getEntries(farmId)
     if (path == nil) then
         local savegameDir = g_currentMission.missionInfo.savegameDirectory
@@ -122,7 +122,7 @@ function NWT_Console:farmValueToCSV(path)
 end
 
 function NWT_Console:farmValueHistoryToCSV(path)
-    farmId = farmId or g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
+    local farmId = g_farmManager:getFarmByUserId(g_currentMission.playerUserId).farmId
     local histories = NWT_historyUtil:getHistories(farmId)
     if (path == nil) then
         local savegameDir = g_currentMission.missionInfo.savegameDirectory

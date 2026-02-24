@@ -29,7 +29,7 @@ function NWT_netWorthTracker:loadMap()
 
 	NWT_netWorthTracker.fixInGameMenu(guiNetWorthTracker,"ingameMenuNetWorthTracker", {0,0,1024,1024}, 2, nil)
 
-	guiNetWorthTracker:initialize()	
+	guiNetWorthTracker:initialize()
 
 end
 
@@ -71,7 +71,7 @@ function NWT_netWorthTracker.fixInGameMenu(frame,pageName,uvs,position,predicate
 
 	inGameMenu.pagingElement:updateAbsolutePosition()
 	inGameMenu.pagingElement:updatePageMapping()
-	
+
 	inGameMenu:registerPage(inGameMenu[pageName], position, predicateFunc)
 	local iconFileName = Utils.getFilename('images/menuIcon.dds', NWT_netWorthTracker.dir)
 	inGameMenu:addPageTab(inGameMenu[pageName],iconFileName, GuiUtils.getUVs(uvs))

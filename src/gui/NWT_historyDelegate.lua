@@ -6,7 +6,7 @@
 NWT_historyDelegate = {}
 NWT_historyDelegate._mt = Class(NWT_historyDelegate, TabbedMenuFrameElement)
 
-function NWT_historyDelegate.new()
+function NWT_historyDelegate.new(customMt)
     local self = NWT_historyDelegate:superClass().new(nil, customMt or NWT_historyDelegate._mt)
     return self
  end
