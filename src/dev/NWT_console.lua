@@ -116,8 +116,7 @@ function NWT_Console:farmValueToCSV(path)
     if (path == nil) then
         local savegameDir = g_currentMission.missionInfo.savegameDirectory
         if (savegameDir == nil) then
-            print("NWT_ERROR: No File Path Found!")
-            print("NWT_ERROR:     Please specifiy a file path or save the game prior to exporting to CSV")
+            error("NWT_ERROR: No File Path Found! Please save the game prior or specify a file path to exporting to CSV.")
         else
             path = savegameDir .. "/nwt_farm_value.csv"
         end
@@ -132,8 +131,7 @@ function NWT_Console:farmValueHistoryToCSV(path)
     if (path == nil) then
         local savegameDir = g_currentMission.missionInfo.savegameDirectory
         if (savegameDir == nil) then
-            print("NWT_ERROR: No File Path Found!")
-            print("NWT_ERROR:     Please specifiy a file path or save the game prior to exporting to CSV")
+            error("NWT_ERROR: No File Path Found! Please save the game prior or specify a file path to exporting to CSV.")
         else
             path = savegameDir .. "/nwt_farm_value_history.csv"
         end
