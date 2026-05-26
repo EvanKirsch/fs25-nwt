@@ -94,9 +94,16 @@ function NWT_netWorthCalcUtil:getLivestockEntries(entryTable, farmId)
                 local subType = g_currentMission.animalSystem.subTypes[cluster.subTypeIndex]
                 local unmodifiedPrice = subType.sellPrice:get(cluster.age)
 
-                -- TODO - fix price calculations, incorrect for horses and not 100% healthy animals
-                local healthModifier = math.min(1, subType.healthThresholdFactor + (cluster.health / 100))
-                local modifiedPrice = healthModifier * unmodifiedPrice
+                local healthFactor = cluster.health / 100
+                local modifiedPrice
+                if cluster.fitness ~= nil then
+                    -- Horses
+                    local fitnessFactor = cluster.fitness / 100
+                    modifiedPrice = unmodifiedPrice * (0.3 + 0.5 * healthFactor + 0.2 * fitnessFactor)
+                else
+                    -- Standard animals
+                    modifiedPrice = unmodifiedPrice * (0.4 + 0.6 * healthFactor)
+                end
 
                 livestockValue = livestockValue + (modifiedPrice * cluster.numAnimals)
                 livestockNumber = livestockNumber + cluster.numAnimals
