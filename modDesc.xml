@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="105" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://validation.gdn.giants-software.com/xml/fs25/modDesc.xsd">
   <author>Evan Kirsch</author>
-  <version>1.1.0.1</version>
+  <version>1.1.0.2</version>
   <title>
       <en>Net Worth Tracker</en>
       <de>Vermögens-Tracker</de>
@@ -33,6 +33,9 @@ Youtube Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Changelog
 ---
+1.1.0.2:
+  - Corrects animal value when health or fitness is less than 100%
+  - Fixes error when generating files before game has been saved
 1.1.0.1:
   - Adds PL translation
   - Removes GIANTS `Object` superclass from instantiated data objects to reduce object clutter resulting in reduced server performance
@@ -71,6 +74,9 @@ YouTube-Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Änderungsprotokoll
 ---
+1.1.0.2:
+  - Korrigiert den Tierwert, wenn Gesundheit oder Fitness unter 100% liegen.
+  - Behebt einen Fehler beim Generieren von Dateien, bevor das Spiel gespeichert wurde.
 1.1.0.1:
   - Fügt pl-Übersetzung hinzu
   - Entfernt die GIANTS `Object` aus instanziierten Datenobjekten, um die Objektanzahl zu reduzieren und dadurch die Serverleistung zu verringern.
