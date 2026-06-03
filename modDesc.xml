@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="105" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://validation.gdn.giants-software.com/xml/fs25/modDesc.xsd">
+<modDesc descVersion="109" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://validation.gdn.giants-software.com/xml/fs25/modDesc.xsd">
   <author>Evan Kirsch</author>
-  <version>1.1.0.2</version>
+  <version>1.1.0.3</version>
   <title>
       <en>Net Worth Tracker</en>
       <de>Vermögens-Tracker</de>
@@ -25,11 +25,10 @@ Dev Console Commands:
   - `nwtBuildHistory` - rebuilds fake value history from previous day
   - `nwtToggleDebug` - toggles debug mode for the mod
   - `nwtGetFarmValue` - calculates the current farm value
-  - `nwtFarmValueToCSV <file location>` - exports the farms current value to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_farm_value.csv`
-  - `nwtFarmValueHistoryToCSV <file location>` - exports the farms value history to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_famr_value_history.csv`
+  - `nwtFarmValueToCSV <file location>` - exports the farms current value to CSV. Optional param of the absolute file location of the file to be saved. The default save location is `<save game location>/nwt_farm_value.csv`
+  - `nwtFarmValueHistoryToCSV <file location>` - exports the farms value history to CSV. Optional param of the absolute file location of the file to be saved. The default save location is `<save game location>/nwt_famr_value_history.csv`
 
 GitHub link: https://github.com/EvanKirsch/fs25_nwt
-Youtube Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Changelog
 ---
@@ -70,7 +69,6 @@ Befehle für die Entwicklerkonsole:
   - `nwtFarmValueHistoryToCSV <Dateipfad>` – Exportiert den Wertverlauf der Farm als CSV-Datei. Optionaler Parameter: Absoluter Dateipfad der zu speichernden Datei. Standardmäßig wird die Datei unter `<Spielstandverzeichnis>/nwt_farm_value_history.csv` gespeichert.
 
 GitHub-Link: https://github.com/EvanKirsch/fs25_nwt
-YouTube-Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Änderungsprotokoll
 ---
