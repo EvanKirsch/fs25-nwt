@@ -53,4 +53,4 @@ Add a new translation file at `translations/translation_XX.xml` using an existin
 
 ## Lua tooling
 
-`.luarc.json` points the Lua language server at `~/Repos/mods/dataS` for FS25 API type stubs. Keep this path up to date if the stubs location changes.
+`.luarc.json` points the Lua language server for FS25 API type stubs.
