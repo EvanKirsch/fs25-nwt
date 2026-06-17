@@ -1,4 +1,4 @@
-name: Release
+name: Release Net Worth Tracker
 
 on:
   push:
@@ -14,13 +14,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build zip
-        run: git archive -o FS25_netWorthTracker_update.zip HEAD
+        run: git archive -o FS25_NetWorthTracker_update.zip HEAD
 
       - name: Create release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${{ github.ref_name }}" \
-            FS25_netWorthTracker_update.zip \
+            FS25_NetWorthTracker_update.zip \
             --title "${{ github.ref_name }}" \
             --generate-notes
