@@ -50,7 +50,10 @@ function NWT_netWorthCalcUtil:getEquipmentEntries(entryTable, farmId)
             local vehicleConfig = g_storeManager:getItemByXMLFilename(vehicle.configFileName)
             local assetSubCategory = nil
             if vehicleConfig ~= nil then
-                assetSubCategory = g_storeManager:getCategoryByName(vehicleConfig.categoryName).title
+                local vehicleCategory = g_storeManager:getCategoryByName(vehicleConfig.categoryName)
+                if vehicleCategory ~= nil then
+                    assetSubCategory = vehicleCategory.title
+                end
             end
             local vehicleAgeTxt = g_i18n:getText("details_age") .. ": " .. self:getFormatedAge(vehicle.age)
             local vehicleHours = math.floor((vehicle.operatingTime / 1000 / 60 / 60) + .5)
