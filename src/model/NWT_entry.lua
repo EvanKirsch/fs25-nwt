@@ -21,7 +21,7 @@ function NWT_entry:new(farmId, title, category, subCategory, details, amount)
 end
 
 function NWT_entry:getCSVHeaders()
-    return "tile" .. "," ..
+    return "title" .. "," ..
         "category" .. "," ..
         "subCategory" .. "," ..
         "details" .. "," ..

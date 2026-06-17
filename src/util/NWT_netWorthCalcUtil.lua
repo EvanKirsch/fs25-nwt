@@ -55,7 +55,7 @@ function NWT_netWorthCalcUtil:getEquipmentEntries(entryTable, farmId)
                     assetSubCategory = vehicleCategory.title
                 end
             end
-            local vehicleAgeTxt = g_i18n:getText("details_age") .. ": " .. self:getFormatedAge(vehicle.age)
+            local vehicleAgeTxt = g_i18n:getText("details_age") .. ": " .. self:getFormattedAge(vehicle.age)
             local vehicleHours = math.floor((vehicle.operatingTime / 1000 / 60 / 60) + .5)
             local vehicleHoursTxt = g_i18n:getText("details_operating_time") .. ": " .. tostring(vehicleHours)
             local assetDetails = vehicleAgeTxt .. ", " .. vehicleHoursTxt
@@ -74,7 +74,7 @@ function NWT_netWorthCalcUtil:getPlaceableEntries(entryTable, farmId)
         if placeable.ownerFarmId == farmId and placeable:getSellPrice() ~= 0 then
             local assetCategory = g_i18n:getText("table_cat_property")
             local assetSubCategory = g_i18n:getText("table_placeable")
-            local assetDetails = g_i18n:getText("details_age") .. ": "  .. self:getFormatedAge(placeable.age)
+            local assetDetails = g_i18n:getText("details_age") .. ": "  .. self:getFormattedAge(placeable.age)
 
             local asset = NWT_entry:new(farmId, placeable:getName(), assetCategory, assetSubCategory, assetDetails, placeable:getSellPrice())
             table.insert(entryTable, asset)
@@ -161,7 +161,7 @@ function NWT_netWorthCalcUtil:getFarmlandEntries(entryTable, farmId)
     return entryTable
 end
 
-function NWT_netWorthCalcUtil:getFormatedAge(age)
+function NWT_netWorthCalcUtil:getFormattedAge(age)
     local unit = g_i18n:getText("details_age_month_unit")
     if age > 12 then
         age = string.format("%.1f", (age/12))
