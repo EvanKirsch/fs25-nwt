@@ -70,7 +70,7 @@ function NWT_inGameMenuNetWorthTracker:updateContent()
 end
 
 function NWT_inGameMenuNetWorthTracker:getEntryTable()
-    self.entryData = self.farmValueDelegate:getFarmEnteries()
+    self.entryData = self.farmValueDelegate:getFarmEntries()
 
     local fCashTotalValue = 0
     local fEquipmentTotalValue = 0

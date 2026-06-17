@@ -8,7 +8,7 @@ NWT_csvUtil = {}
 function NWT_csvUtil:writeToFile(path, myTable)
     print("--- SOF ---")
     local file = io.open(path, "w")
-    if #myTable > 0  then
+    if #myTable > 0 then
         print(myTable[1]:getCSVHeaders())
         file:write(myTable[1]:getCSVHeaders(), "\n")
         for _, record in ipairs(myTable) do

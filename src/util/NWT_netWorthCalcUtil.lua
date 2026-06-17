@@ -37,11 +37,11 @@ end
 
 function NWT_netWorthCalcUtil:getEquipmentEntries(entryTable, farmId)
     for _, vehicle in ipairs(g_currentMission.vehicleSystem.vehicles) do
-        
-        if vehicle.ownerFarmId == farmId 
-            and vehicle.getSellPrice ~= nil 
-            and vehicle.typeName ~= nil 
-            and vehicle.typeName ~= "pallet"            -- exclude spawned pallets 
+
+        if vehicle.ownerFarmId == farmId
+            and vehicle.getSellPrice ~= nil
+            and vehicle.typeName ~= nil
+            and vehicle.typeName ~= "pallet"            -- exclude spawned pallets
             and vehicle.typeName ~= "treeSaplingPallet" -- exclude spawned tree sapling pallets
             and vehicle.typeName ~= "bigBag"            -- exclude spawned big bags
             and vehicle.propertyState == VehiclePropertyState.OWNED then
@@ -74,7 +74,7 @@ function NWT_netWorthCalcUtil:getPlaceableEntries(entryTable, farmId)
         if placeable.ownerFarmId == farmId and placeable:getSellPrice() ~= 0 then
             local assetCategory = g_i18n:getText("table_cat_property")
             local assetSubCategory = g_i18n:getText("table_placeable")
-            local assetDetails = g_i18n:getText("details_age") .. ": "  .. self:getFormattedAge(placeable.age)
+            local assetDetails = g_i18n:getText("details_age") .. ": " .. self:getFormattedAge(placeable.age)
 
             local asset = NWT_entry:new(farmId, placeable:getName(), assetCategory, assetSubCategory, assetDetails, placeable:getSellPrice())
             table.insert(entryTable, asset)
