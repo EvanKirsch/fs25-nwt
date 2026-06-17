@@ -171,7 +171,7 @@ end
 function NWT_inGameMenuNetWorthTracker:getDateString(historyData)
     return g_i18n:formatPeriod((((historyData.periodId or 0) - 1) % 12), false) -- wtf?
         .. " " .. tostring(historyData.dayInPeriod or 1)
-        .. ", " .. tostring(2024 + historyData.year or 0)
+        .. ", " .. tostring(2024 + (historyData.year or 0))
 end
 
 function NWT_inGameMenuNetWorthTracker:onClickLineItemSort(entry)
