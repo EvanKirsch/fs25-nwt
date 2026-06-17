@@ -12,7 +12,7 @@ function NWT_netWorthCalcUtil:getEntries(farmId)
 
     local cashCategory = g_i18n:getText("table_cat_cash")
     local cashSubCategory = g_i18n:getText("table_cash")
-    local cashAmount = g_currentMission:getMoney()
+    local cashAmount = g_currentMission:getMoney(farmId)
 
     local cashAsset = NWT_entry:new(farmId, cashSubCategory, cashCategory, cashSubCategory, "", cashAmount)
     table.insert(entryTable, cashAsset)
