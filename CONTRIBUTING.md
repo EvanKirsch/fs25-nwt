@@ -4,6 +4,9 @@
 
 Please open a Github issue under the issues tab and tag it as a `bug`
 
+## Feature Request
+Please open a Github issue under the issues tab and tag it as a `enhancement`
+
 ## Translations
 
 1. Add translation file in `translation/translation_XX.xml` directory where `XX` is the code of the language code found below
