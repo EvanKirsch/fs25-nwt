@@ -5,7 +5,7 @@
 
 NWT_entry = {}
 
-function NWT_entry:new(farmId, title, category, subCategory, details, amount)
+function NWT_entry:new(farmId, title, category, subCategory, details, amount, iconFilename)
     local prototype = {}
     setmetatable(prototype, self)
     self.__index = self
@@ -16,6 +16,7 @@ function NWT_entry:new(farmId, title, category, subCategory, details, amount)
     prototype.subCategory = subCategory
     prototype.details = details
     prototype.entryAmount = amount
+    prototype.iconFilename = iconFilename
 
     return prototype
 end

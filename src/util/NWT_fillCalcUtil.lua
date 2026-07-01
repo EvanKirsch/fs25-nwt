@@ -200,13 +200,14 @@ function NWT_fillCalcUtil:fillEntryCalculator(fillTable, farmId, storageFillLeve
                 local entryTitle = fillInfo.title
                 local details = math.floor(fillAmount + 0.5)
                 local fillValue = fillAmount * fillInfo.pricePerLiter
+                local fillIconFilename = fillInfo.hudOverlayFilename or nil
 
                 local asset = nil
                 if fillTable[fillId] == nil then
                     local assetCategory = g_i18n:getText("table_cat_inventory")
                     local assetSubCategory = g_i18n:getText("table_fill")
 
-                    asset = NWT_entry:new(farmId, entryTitle, assetCategory, assetSubCategory, details, fillValue)
+                    asset = NWT_entry:new(farmId, entryTitle, assetCategory, assetSubCategory, details, fillValue, fillIconFilename)
 
                 else
                     asset = fillTable[fillId]

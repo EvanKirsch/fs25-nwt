@@ -49,6 +49,11 @@
          <textAlignment value="center" />
      </Profile>
 
+     <Profile name="NWT_rowIcon" extends="baseReference" with="anchorMiddleLeft">
+         <size value="24px 24px" />
+         <imageSliceId value="noSlice"/>
+     </Profile>
+
      <Profile name="NWT_rowCellLeft" extends="NWT_rowCell" with="anchorStretchingYLeft">
          <textAlignment value="left" />
      </Profile>

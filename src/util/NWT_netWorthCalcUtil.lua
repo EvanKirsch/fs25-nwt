@@ -76,7 +76,7 @@ function NWT_netWorthCalcUtil:getPlaceableEntries(entryTable, farmId)
             local assetSubCategory = g_i18n:getText("table_placeable")
             local assetDetails = g_i18n:getText("details_age") .. ": " .. self:getFormattedAge(placeable.age)
 
-            local asset = NWT_entry:new(farmId, placeable:getName(), assetCategory, assetSubCategory, assetDetails, placeable:getSellPrice())
+            local asset = NWT_entry:new(farmId, placeable:getName(), assetCategory, assetSubCategory, assetDetails, (placeable:getSellPrice()))
             table.insert(entryTable, asset)
 
         end
