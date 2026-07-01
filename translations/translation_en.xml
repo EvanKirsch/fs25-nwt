@@ -25,5 +25,6 @@
         <text name="details_age_month_unit" text="Months"/>
         <text name="details_age_year_unit" text="Years"/>
         <text name="details_operating_time" text="Hours"/>
+        <text name="details_size" text="Size"/>
     </texts>
 </l10n>

@@ -26,5 +26,6 @@
         <text name="details_age_month_unit" text="mies."/>
         <text name="details_age_year_unit" text="l."/>
         <text name="details_operating_time" text="godz."/>
+        <text name="details_size" text="Powierzchnia"/>
     </texts>
 </l10n>
