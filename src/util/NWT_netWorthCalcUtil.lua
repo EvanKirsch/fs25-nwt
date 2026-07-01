@@ -148,10 +148,9 @@ function NWT_netWorthCalcUtil:getFarmlandEntries(entryTable, farmId)
         if g_farmlandManager:getFarmlandOwner(farmland.id) == farmId then
             local assetCategory = g_i18n:getText("table_cat_property")
             local assetSubCategory = g_i18n:getText("table_land")
-            local assetName = "Farmland #" .. farmland.name
-            local assetDetails = "Size: " .. string.format("%.2f", farmland.areaInHa) .. " Ha"
+            local assetName = g_i18n:getText("table_land") .. " #" .. farmland.name
+            local assetDetails = g_i18n:getText("details_size") .. ": " .. g_i18n:formatArea(farmland.areaInHa, 2, false)
 
-            -- TODO - add support acres
             local asset = NWT_entry:new(farmId, assetName, assetCategory, assetSubCategory, assetDetails, farmland.price)
             table.insert(entryTable, asset)
 

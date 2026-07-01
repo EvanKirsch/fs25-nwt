@@ -25,5 +25,6 @@
         <text name="details_age_month_unit" text="Monate"/>
         <text name="details_age_year_unit" text="Jahre"/>
         <text name="details_operating_time" text="Std"/>
+        <text name="details_size" text="Größe"/>
     </texts>
 </l10n>
