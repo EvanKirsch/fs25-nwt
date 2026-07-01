@@ -136,6 +136,14 @@ function NWT_inGameMenuNetWorthTracker:populateCellForItemInSection(list, sectio
         local loc_entryData = self.entryData[index]
         cell:getAttribute("entryTitle"):setText(loc_entryData.entryTitle)
 
+        local entryIcon = cell:getAttribute("entryIcon")
+        if loc_entryData.iconFilename ~= nil then
+            entryIcon:setImageFilename(loc_entryData.iconFilename)
+            entryIcon:setVisible(true)
+        else
+            entryIcon:setVisible(false)
+        end
+
         local entryCategory = tostring(loc_entryData.category)
         if loc_entryData.subCategory ~= nil
             and loc_entryData.subCategory ~= "" then

@@ -38,7 +38,8 @@
 
             <SmoothList profile="NWT_list" size="100% 550px" id="entryTable" >
                 <ListItem profile="NWT_listItem" >
-                    <Text profile="NWT_rowCellLeft" position="20px 0px" size="300px 20px" name="entryTitle"/>
+                    <Bitmap profile="NWT_rowIcon" position="10px 0px" name="entryIcon"/>
+                    <Text profile="NWT_rowCellLeft" position="35px 0px" size="270px 20px" name="entryTitle"/>
                     <Text profile="NWT_rowCellLeft" position="400px 0px" size="300px 20px" name="entryCategory"/>
                     <Text profile="NWT_rowCellLeft" position="800px 0px" size="500px 20px" name="entryDetails"/>
                     <Text profile="NWT_rowCellRight" position="-20px 0px" size="500px 20px" name="entryAmount"/>
