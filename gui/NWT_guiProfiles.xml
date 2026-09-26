@@ -42,7 +42,7 @@
          <position value="0px -40px" />
      </Profile>
 
-     <Profile name="NWT_historyChart" extends="baseReference" with="anchorStretchingXY">
+     <Profile name="NWT_historyChart" extends="baseReference">
      </Profile>
 
      <Profile name="NWT_historyListWrapper" extends="emptyPanel" with="anchorStretchingYRight">
@@ -62,7 +62,7 @@
      <Profile name="NWT_historyFilterWrapper" extends="emptyPanel" with="anchorStretchingYLeft pivotTopLeft">
      </Profile>
 
-     <Profile name="NWT_historyContentContainer" extends="emptyPanel" with="anchorStretchingXY pivotTopLeft">
+     <Profile name="NWT_historyContentContainer" extends="emptyPanel" with="pivotTopLeft">
          <size value="100% 93%" />
      </Profile>
 
