@@ -29,7 +29,6 @@ Dev Console Commands:
   - `nwtFarmValueHistoryToCSV <file location>` - exports the farms value history to CSV. Optional param of the absolute file location of the file to be saved. The defualt save location is `<save game location>/nwt_famr_value_history.csv`
 
 GitHub link: https://github.com/EvanKirsch/fs25_nwt
-Youtube Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Changelog
 ---
@@ -77,7 +76,6 @@ Befehle für die Entwicklerkonsole:
   - `nwtFarmValueHistoryToCSV <Dateipfad>` – Exportiert den Wertverlauf der Farm als CSV-Datei. Optionaler Parameter: Absoluter Dateipfad der zu speichernden Datei. Standardmäßig wird die Datei unter `<Spielstandverzeichnis>/nwt_farm_value_history.csv` gespeichert.
 
 GitHub-Link: https://github.com/EvanKirsch/fs25_nwt
-YouTube-Demo [EN]: https://youtu.be/nhx3g8MrU3E
 
 Änderungsprotokoll
 ---
